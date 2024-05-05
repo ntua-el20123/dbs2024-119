@@ -1,0 +1,31 @@
+<!-- views/foodGroup.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Group</title>
+</head>
+<body>
+    <h1>Food Group Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Food Group ID</th>
+                <th>Group Name</th>
+                <th>Group Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.food_group_id %></td>
+                    <td><%= row.group_name %></td>
+                    <td><%= row.group_description %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
