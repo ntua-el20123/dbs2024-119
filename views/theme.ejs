@@ -1,0 +1,29 @@
+<!-- views/theme.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Table</title>
+</head>
+<body>
+    <h1>Theme Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Theme Name</th>
+                <th>Theme Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.theme_name %></td>
+                    <td><%= row.theme_description %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

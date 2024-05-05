@@ -23,4 +23,14 @@ router.get('/food_group', async (req, res) => {
     }
 });
 
+router.get('/theme', async (req, res) => {
+    try {
+        const [rows, fields] = await pool.query('SELECT * FROM theme');
+        res.render('theme', { rows });
+    } catch (error) {
+        console.error('Error fetching theme:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 module.exports = router;
