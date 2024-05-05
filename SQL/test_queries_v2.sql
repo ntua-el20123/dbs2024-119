@@ -1,4 +1,4 @@
-USE db_proj_119-24;
+USE `dbs2024-119`;
 
 -- Basic INSERT operation
 
@@ -81,12 +81,12 @@ DELETE FROM recipe WHERE recipe_id = 1;
 
 -- ------------------------------------------------------------------------------------------------------------------------------------------------
 
--- recipe_has_ingridient
+-- recipe_has_ingredient
 
-INSERT INTO recipe_has_ingridient(recipe_id,ingridient_id) VALUES(1,1);
-INSERT INTO recipe_has_ingridient(recipe_id,ingridient_id) VALUES(1,2);
+INSERT INTO recipe_has_ingredient(recipe_id,ingridient_id) VALUES(1,1);
+INSERT INTO recipe_has_ingredient(recipe_id,ingridient_id) VALUES(1,2);
 
-DELETE FROM recipe_has_ingridient WHERE recipe_id = 1;
+DELETE FROM recipe_has_ingredient WHERE recipe_id = 1;
 
 -- ------------------------------------------------------------------------------------------------------------------------------------------------
 

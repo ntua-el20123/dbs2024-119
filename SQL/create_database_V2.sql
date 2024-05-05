@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS `db_proj_119-24`;
+DROP DATABASE IF EXISTS `dbs2024-119`;
 
-CREATE DATABASE IF NOT EXISTS `db_proj_119-24`;
+CREATE DATABASE IF NOT EXISTS `dbs2024-119`;
 
-USE `db_proj_119-24`;
+USE `dbs2024-119`;
 
 CREATE TABLE food_group(
  food_group_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -112,7 +112,7 @@ CREATE TABLE recipe_has_cooking_equipment(
  
  CREATE TABLE tips(
  tip_number SMALLINT UNSIGNED NOT NULL,
- tip_despcription VARCHAR(100) NOT NULL,
+ tip_description VARCHAR(100) NOT NULL,
  recipe_id SMALLINT UNSIGNED NOT NULL,
  PRIMARY KEY(tip_number,recipe_id),
  KEY idx_fk_recipe_id (recipe_id),
@@ -129,8 +129,8 @@ CREATE TABLE recipe_has_cooking_equipment(
  image_description VARCHAR(200),
  actual_image BLOB,
  age INT NOT NULL,
- years_of_work_expirience INT NOT NULL,
- proffesional_status VARCHAR(45) NOT NULL,
+ years_of_work_experience INT NOT NULL,
+ professional_status VARCHAR(45) NOT NULL,
  cousine_name VARCHAR(30) NOT NULL,
  PRIMARY KEY(chef_id),
  KEY idx_fk_cousine_name (cousine_name),
