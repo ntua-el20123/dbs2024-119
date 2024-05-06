@@ -5,9 +5,9 @@ fake = Faker()
 
 # Establish a database connection
 cnx = mysql.connector.connect(
-    user='your_username', 
-    password='your_password', 
-    host='your_host', 
+    user='root', 
+    password='', 
+    host='localhost', 
     database='dbs2024-119'
 )
 cursor = cnx.cursor()
@@ -37,9 +37,27 @@ for _ in range(10):
     cursor.execute(query, data)
 
 # Generate data for ingridient table
-for _ in range(10):
+for _ in range(100):
     query = ("INSERT INTO ingridient (ingridient_name, food_group_id) VALUES (%s, %s)")
     data = (fake.word(), fake.random_int(min=1, max=10, step=1))
+    cursor.execute(query, data)
+
+# Generate data for cook table
+for _ in range(50):
+    query = ("INSERT INTO cook (cook_name) VALUES (%s)")
+    data = (fake.name(),)
+    cursor.execute(query, data)
+
+# Generate data for episode table
+for _ in range(50):
+    query = ("INSERT INTO episode (episode_name) VALUES (%s)")
+    data = (fake.sentence(),)
+    cursor.execute(query, data)
+
+# Generate data for recipe table
+for _ in range(50):
+    query = ("INSERT INTO recipe (recipe_name, ingridient_id, cook_id, episode_id) VALUES (%s, %s, %s, %s)")
+    data = (fake.sentence(), fake.random_int(min=1, max=100, step=1), fake.random_int(min=1, max=50, step=1), fake.random_int(min=1, max=50, step=1))
     cursor.execute(query, data)
 
 # Commit the changes and close the connection

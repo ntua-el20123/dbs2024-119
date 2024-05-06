@@ -8,7 +8,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 // Import and use routes defined in routes.js
-const routes = require('./routes'); // Import the routes module
+const routes = require('./routes/routes'); // Import the routes module
 app.use('/', routes); // Mount routes under / path
 
 // Start the server
