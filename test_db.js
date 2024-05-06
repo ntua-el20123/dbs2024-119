@@ -7,18 +7,10 @@ async function test_db() {
         const connection = await pool.getConnection();
         await connection.beginTransaction();
 
-        // CREATE database
-        // Read the SQL file content
-        const sqlFilePath = './SQL/create_database_V2.sql';
-        const sql = fs.readFileSync(sqlFilePath, 'utf-8');
-
-        // Execute the SQL commands
-        await connection.query(sql);
-
         try {
             // CREATE database
             // Read the SQL file content
-            const createFilePath = './SQL/create_database_V2.sql';
+            const createFilePath = './SQL/create_db.sql';
             const sqlCreate = fs.readFileSync(createFilePath, 'utf-8');
 
             // Execute the SQL commands
@@ -27,7 +19,7 @@ async function test_db() {
             console.log('Database created successfully');
 
             // test database
-            const testFilePath = './SQL/test_queries_v2.sql';
+            const testFilePath = './SQL/test_db.sql';
             const sqlTest = fs.readFileSync(testFilePath, 'utf-8');
 
             await connection.query(sqlTest);
