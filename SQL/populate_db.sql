@@ -1,221 +1,116 @@
-use dblabV2;
+-- INSERT operations on food_group table
+INSERT INTO food_group(food_group_id, group_name, group_description) VALUES (1, 'red meat', 'fatty and delicious but not very healthy');
+INSERT INTO food_group(food_group_id, group_name, group_description) VALUES (2, 'vegetables', 'green and grassy and good for your health');
+INSERT INTO food_group(food_group_id, group_name, group_description) VALUES (5, 'fruits', 'great for salads and smoothies');
+INSERT INTO food_group(food_group_id, group_name, group_description) VALUES (7, 'fish', 'scaly and slimy but delicious');
 
--- Insert random dummy data into food_group table
-INSERT INTO food_group (group_name, group_description)
-VALUES
-    ('Meat', 'Various types of meat'),
-    ('Vegetables', 'Assorted vegetables'),
-    ('Fruits', 'Different kinds of fruits'),
-    ('Seafood', 'Fish and seafood'),
-    ('Grains', 'Different grains and cereals');
+-- DELETE operation on food_group table
+DELETE FROM food_group WHERE group_name = 'fish';
 
--- Insert random dummy data into theme table
-INSERT INTO theme (theme_name, theme_description)
-VALUES
-    ('Spicy Dishes', 'Recipes with a spicy twist'),
-    ('Healthy Choices', 'Nutritious and balanced meals'),
-    ('Desserts Galore', 'Indulgent dessert recipes');
+-- UPDATE operations on food_group table
+UPDATE food_group SET group_name = 'meat' WHERE group_name = 'red meat';
+UPDATE food_group SET group_name = 'red meat' WHERE food_group_id = 1;
+UPDATE food_group SET food_group_id = 3 WHERE food_group_id = 5;
 
--- Insert random dummy data into cousine table
-INSERT INTO cousine (cousine_name)
-VALUES
-    ('Italian'),
-    ('Asian'),
-    ('Mexican'),
-    ('Mediterranean'),
-    ('Indian');
+-- INSERT operations on theme table
+INSERT INTO theme(theme_name, theme_description) VALUES ('flaming hot', 'cook with spices to create the most flavorful and spicy dishes possible!');
+INSERT INTO theme(theme_name, theme_description) VALUES ('nose to tail', 'cook utilizing as much of the protein provided as possible!');
 
--- Insert random dummy data into tag table
-INSERT INTO tag (tag_name)
-VALUES
-    ('Quick and Easy'),
-    ('Vegetarian'),
-    ('Low Carb'),
-    ('Family Friendly'),
-    ('Gluten Free');
+-- This query is designed to fail due to unique constraint violation
+/*
+INSERT INTO theme(theme_name, theme_description) VALUES ('flaming hot', 'same primary but different attribute');
+*/
 
--- Insert at least 100 random dummy data into ingridient table
-DELIMITER //
+INSERT INTO theme(theme_name, theme_description) VALUES ('Under the Sea', 'Exotic seafood recipes with unusual ingredients!');
 
-CREATE PROCEDURE InsertIngredients(IN num INT)
-BEGIN
-    DECLARE i INT DEFAULT 1;
-    DECLARE ingridient_name VARCHAR(45);
+-- DELETE operations on theme table
+DELETE FROM theme WHERE theme_name = 'nose to tail';
+DELETE FROM theme WHERE theme_description = 'Exotic seafood recipes with unusual ingredients!';
 
-    WHILE i <= num DO
-        SET ingridient_name = CONCAT('Ingredient ', i);
+-- UPDATE operations on theme table
+UPDATE theme SET theme_name = 'hot' WHERE theme_name = 'flaming hot';
+UPDATE theme SET theme_name = 'flaming hot' WHERE theme_name = 'hot';
 
-        INSERT INTO ingridient (ingridient_name, food_group_id)
-        VALUES
-            (ingridient_name, FLOOR(1 + RAND() * 5)); -- Random food_group_id between 1 and 5
+-- INSERT operations on cousine table
+INSERT INTO cousine(cousine_name) VALUES ('Asian');
+INSERT INTO cousine(cousine_name) VALUES ('Italian');
+INSERT INTO cousine(cousine_name) VALUES ('Spanish');
+INSERT INTO cousine(cousine_name) VALUES ('French');
+INSERT INTO cousine(cousine_name) VALUES ('Latin');
+INSERT INTO cousine(cousine_name) VALUES ('Desserts');
+INSERT INTO cousine(cousine_name) VALUES ('Mexican');
 
-        SET i = i + 1;
-    END WHILE;
-END//
+-- DELETE operation on cousine table
+DELETE FROM cousine WHERE cousine_name = 'Middle-Eastern';
 
-DELIMITER ;
+-- UPDATE operation on cousine table
+UPDATE cousine SET cousine_name = 'asian' WHERE cousine_name = 'asian';
 
-CALL InsertIngredients(100); -- Call the procedure to insert 100 ingredients
+-- INSERT operation on tag table
+INSERT INTO tag(tag_name) VALUES ('quick and easy');
 
--- Insert at least 50 random dummy data into recipe table
-DELIMITER //
+-- INSERT operations on ingridient table
+INSERT INTO ingridient(ingridient_id, ingridient_name, food_group_id) VALUES (1, 'ground meat', 1);
+INSERT INTO ingridient(ingridient_id, ingridient_name, food_group_id) VALUES (2, 'apple', 3);
+INSERT INTO ingridient(ingridient_id, ingridient_name, food_group_id) VALUES (3, 'pear', 3);
 
-CREATE PROCEDURE InsertRecipes(IN num INT)
-BEGIN
-    DECLARE i INT DEFAULT 1;
-    DECLARE recipe_name VARCHAR(45);
+-- DELETE operation on ingridient table
+DELETE FROM ingridient WHERE ingridient_id = 3;
 
-    WHILE i <= num DO
-        SET recipe_name = CONCAT('Recipe ', i);
+-- UPDATE operation on ingridient table
+UPDATE ingridient SET ingridient_name = 'broccoli', food_group_id = 2 WHERE ingridient_name = 'ground meat';
 
-        INSERT INTO recipe (cooking_time, prep_time, difficulty, recipe_name, carbs_per_serving, fats_per_serving, proteins_per_serving, total_calories, number_of_servings, meal_type, cousine_name, theme_name, main_ingridient_id)
-        VALUES
-            (SEC_TO_TIME(FLOOR(600 + RAND() * 1800)), -- Random cooking time between 10 minutes and 30 minutes
-             SEC_TO_TIME(FLOOR(300 + RAND() * 1200)), -- Random prep time between 5 minutes and 20 minutes
-             FLOOR(1 + RAND() * 5), -- Random difficulty level between 1 and 5
-             recipe_name,
-             FLOOR(10 + RAND() * 50), -- Random carbs per serving between 10g and 60g
-             FLOOR(5 + RAND() * 30), -- Random fats per serving between 5g and 35g
-             FLOOR(10 + RAND() * 40), -- Random proteins per serving between 10g and 50g
-             FLOOR(200 + RAND() * 500), -- Random total calories between 200 and 700
-             FLOOR(1 + RAND() * 6), -- Random number of servings between 1 and 6
-             'Dinner', -- Hardcoded meal type for simplicity
-             'Italian', -- Hardcoded cousine name for simplicity
-             'Healthy Choices', -- Hardcoded theme name for simplicity
-             FLOOR(1 + RAND() * 100)); -- Random main_ingridient_id between 1 and 100 (assuming at least 100 ingredients)
+-- INSERT operation on recipe table
+INSERT INTO recipe(recipe_id, cooking_time, prep_time, difficulty, recipe_name, image, carbs_per_serving, fats_per_serving, proteins_per_serving, total_calories, number_of_servings, meal_type, cousine_name, theme_name, main_ingridient_id) VALUES (1, 15, 5, 2, 'test recipe', NULL, 100, 100, 100, 300, 1, 'lunch', 'Italian', 'flaming hot', 1);
 
-        SET i = i + 1;
-    END WHILE;
-END//
+-- UPDATE operation on recipe table
+UPDATE recipe SET total_calories = 301 WHERE recipe_id = 1;
 
-DELIMITER ;
+-- INSERT operations on recipe_has_ingridient table
+INSERT INTO recipe_has_ingridient(recipe_id, ingridient_id) VALUES (1, 1);
+INSERT INTO recipe_has_ingridient(recipe_id, ingridient_id) VALUES (1, 2);
 
-CALL InsertRecipes(50); -- Call the procedure to insert 50 recipes
+-- DELETE operation on recipe_has_ingridient table
+DELETE FROM recipe_has_ingridient WHERE recipe_id = 1;
 
--- Insert at least 50 random dummy data into chef table
-DELIMITER //
+-- INSERT operation on recipe_has_tag table
+INSERT INTO recipe_has_tag(tag_name, recipe_id) VALUES ('quick and easy', 1);
 
-CREATE PROCEDURE InsertChefs(IN num INT)
-BEGIN
-    DECLARE i INT DEFAULT 1;
-    DECLARE first_name VARCHAR(45);
-    DECLARE last_name VARCHAR(45);
+-- DELETE operation on recipe_has_tag table
+DELETE FROM recipe_has_tag WHERE recipe_id = 1;
 
-    WHILE i <= num DO
-        SET first_name = CONCAT('Chef ', i);
-        SET last_name = 'Smith'; -- Hardcoded last name for simplicity
+-- INSERT operation on cooking_equipment table
+INSERT INTO cooking_equipment(equipment_id, equipment_name, instructions, image, image_description) VALUES (1, 'blender', 'blend things', NULL, 'it''s a blender');
 
-        INSERT INTO chef (username,_password,first_name, last_name, birth_year, phone_number, age, years_of_work_experience, professional_status, cousine_name)
-        VALUES
+-- INSERT operations on recipe_has_cooking_equipment table
+INSERT INTO recipe_has_cooking_equipment(recipe_id, equipment_id) VALUES (1, 1);
+DELETE FROM recipe_has_cooking_equipment WHERE recipe_id = 1;
 
-            (first_name,
-             last_name,
-             first_name, -- use the first name as the username
-             'password', -- hard code the password for simplicity
-             FLOOR(1960 + RAND() * 40), -- Random birth year between 1960 and 2000
-             FLOOR(100000000 + RAND() * 900000000), -- Random phone number with 9 digits
-             FLOOR(25 + RAND() * 40), -- Random age between 25 and 65
-             FLOOR(5 + RAND() * 40), -- Random years of work experience between 5 and 45
-             'Head Chef', -- Hardcoded professional status for simplicity
-             'Italian'); -- Hardcoded cousine name for simplicity
+-- INSERT operations on tips table
+INSERT INTO tips(tip_number, tip_description, recipe_id) VALUES (1, 'Drizzle with the Rizzle', 1);
+INSERT INTO tips(tip_number, tip_description, recipe_id) VALUES (2, 'Sprinkle the Mizzle Fizzle', 1);
+INSERT INTO tips(tip_number, tip_description, recipe_id) VALUES (3, 'Spike with heroin', 1);
 
-        SET i = i + 1;
-    END WHILE;
-END//
+-- DELETE operation on tips table
+DELETE FROM tips WHERE recipe_id = 1;
 
-DELIMITER ;
+-- INSERT operation on chef table
+INSERT INTO chef(chef_id, first_name, last_name, birth_year, phone_number, image_description, actual_image, age, years_of_work_experience, professional_status, cousine_name) VALUES (1, 'Tony', 'Spaghetti', 1943, 698581581, 'the most decorated Italian chef of Asian cuisine', NULL, 89, 88, 'the goat', 'Italian');
+INSERT INTO chef (chef_id, first_name, last_name, birth_year, phone_number, image_description, actual_image, age, years_of_work_experience, professional_status, cousine_name) VALUES (2, 'Jessica', 'Smith', 1978, 556892341, 'Award-winning chef specializing in French cuisine', NULL, 47, 20, 'Master Chef', 'French');
+INSERT INTO chef (chef_id, first_name, last_name, birth_year, phone_number, image_description, actual_image, age, years_of_work_experience, professional_status, cousine_name) VALUES (3, 'Carlos', 'Garcia', 1965, 789234567, 'Renowned Spanish chef known for tapas and paella', NULL, 60, 35, 'Gastronomy Maestro', 'Spanish');
+INSERT INTO chef (chef_id, first_name, last_name, birth_year, phone_number, image_description, actual_image, age, years_of_work_experience, professional_status, cousine_name) VALUES (4, 'Linda', 'Wilson', 1982, 456123789, 'Innovative chef blending Asian and Fusion cuisine', NULL, 39, 15, 'Creative Culinary Artist', 'Asian');
+INSERT INTO chef (chef_id, first_name, last_name, birth_year, phone_number, image_description, actual_image, age, years_of_work_experience, professional_status, cousine_name) VALUES (5, 'Ricardo', 'Santos', 1970, 987654321, 'Expert in Latin American dishes and flavors', NULL, 51, 25, 'Latin Cuisine Specialist', 'Latin');
+INSERT INTO chef (chef_id, first_name, last_name, birth_year, phone_number, image_description, actual_image, age, years_of_work_experience, professional_status, cousine_name) VALUES (6, 'Sophie', 'Martin', 1985, 321789654, 'Innovative pastry chef with a passion for desserts', NULL, 36, 12, 'Dessert Diva', 'Desserts');
+INSERT INTO chef (chef_id, first_name, last_name, birth_year, phone_number, image_description, actual_image, age, years_of_work_experience, professional_status, cousine_name) VALUES (7, 'Miguel', 'Gonzalez', 1975, 654987321, 'Master of Mexican cuisine and traditional dishes', NULL, 46, 22, 'Mexican Food Expert', 'Mexican');
 
-CALL InsertChefs(50); -- Call the procedure to insert 50 chefs
+-- INSERT operation on episode table
+INSERT INTO episode(episode_number, season_number) VALUES (1, 1);
 
--- Insert at least 50 random dummy data into episode table
-INSERT INTO episode (episode_number, season_number)
-VALUES
-    (1, 1),
-    (2, 1),
-    (3, 1),
-    (4, 2),
-    (5, 2),
-    (6, 2),
-    (7, 3),
-    (8, 3),
-    (9, 3),
-    (10, 4),
-    (11, 4),
-    (12, 4),
-    (13, 5),
-    (14, 5),
-    (15, 5),
-    (16, 6),
-    (17, 6),
-    (18, 6),
-    (19, 7),
-    (20, 7),
-    (21, 7),
-    (22, 8),
-    (23, 8),
-    (24, 8),
-    (25, 9),
-    (26, 9),
-    (27, 9),
-    (28, 10),
-    (29, 10),
-    (30, 10),
-    (31, 11),
-    (32, 11),
-    (33, 11),
-    (34, 12),
-    (35, 12),
-    (36, 12),
-    (37, 13),
-    (38, 13),
-    (39, 13),
-    (40, 14),
-    (41, 14),
-    (42, 14),
-    (43, 15),
-    (44, 15),
-    (45, 15),
-    (46, 16),
-    (47, 16),
-    (48, 16),
-    (49, 17),
-    (50, 17);
+-- INSERT operation on judge_in_episode table
+INSERT INTO judge_in_episode(chef_id, episode_number, season_number, judge_number) VALUES (3, 1, 1, 1);
 
--- Insert random dummy data into judge_in_episode table
-INSERT INTO judge_in_episode (chef_id, episode_number, season_number, judge_number)
-SELECT
-    chef_id,
-    episode_number,
-    season_number,
-    1 AS judge_number -- Hardcoded judge_number for simplicity
-FROM
-    chef
-CROSS JOIN
-    episode
-ORDER BY
-    RAND()
-LIMIT
-    50; -- Select 50 random combinations of chef and episode for judges
+-- INSERT operation on scores table
+INSERT INTO scores(chef_id, episode_number, season_number, cousine_name, recipe_id, score_1, score_2, score_3, total_score) VALUES (1, 1, 1, 'Asian', 1, 2, 4, 4, 3);
 
--- Insert random dummy data into scores table
-INSERT INTO scores (chef_id, episode_number, season_number, cousine_name, recipe_id,score_1,score_2,score_3, total_score)
-SELECT
-    chef_id,
-    episode_number,
-    season_number,
-    'Italian' AS cousine_name, -- Hardcoded cousine_name for simplicity
-    recipe_id,
-    FLOOR(1 + RAND() * 5) AS score_1, -- Random score between 1 and 5
-    FLOOR(1 + RAND() * 5) AS score_2, -- Random score between 1 and 5
-    FLOOR(1 + RAND() * 5) AS score_3, -- Random score between 1 and 5
-    (score_1 + score_2 + score_3) / 3.0 AS total_score -- Calculate total score as average
-FROM
-    chef
-CROSS JOIN
-    episode
-CROSS JOIN
-    recipe
-ORDER BY
-    RAND()
-LIMIT
-    50; -- Select 50 random combinations of chef, episode, and recipe for scores
+-- DELETE operation on scores table
+DELETE FROM scores WHERE chef_id = 1;

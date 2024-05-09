@@ -8,16 +8,6 @@ async function test_db() {
         await connection.beginTransaction();
 
         try {
-            // CREATE database
-            // Read the SQL file content
-            const createFilePath = './SQL/create_db.sql';
-            const sqlCreate = fs.readFileSync(createFilePath, 'utf-8');
-
-            // Execute the SQL commands
-            await connection.query(sqlCreate);
-
-            console.log('Database created successfully');
-
             // test database
             const testFilePath = './SQL/test_db.sql';
             const sqlTest = fs.readFileSync(testFilePath, 'utf-8');
