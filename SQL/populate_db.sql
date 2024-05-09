@@ -1,3 +1,5 @@
+use dblabV2;
+
 -- Insert random dummy data into food_group table
 INSERT INTO food_group (group_name, group_description)
 VALUES
@@ -103,10 +105,13 @@ BEGIN
         SET first_name = CONCAT('Chef ', i);
         SET last_name = 'Smith'; -- Hardcoded last name for simplicity
 
-        INSERT INTO chef (first_name, last_name, birth_year, phone_number, age, years_of_work_experience, professional_status, cousine_name)
+        INSERT INTO chef (username,_password,first_name, last_name, birth_year, phone_number, age, years_of_work_experience, professional_status, cousine_name)
         VALUES
+
             (first_name,
              last_name,
+             first_name, -- use the first name as the username
+             'password', -- hard code the password for simplicity
              FLOOR(1960 + RAND() * 40), -- Random birth year between 1960 and 2000
              FLOOR(100000000 + RAND() * 900000000), -- Random phone number with 9 digits
              FLOOR(25 + RAND() * 40), -- Random age between 25 and 65
@@ -193,7 +198,7 @@ LIMIT
     50; -- Select 50 random combinations of chef and episode for judges
 
 -- Insert random dummy data into scores table
-INSERT INTO scores (chef_id, episode_number, season_number, cousine_name, recipe_id, score_1, score_2, score_3, total_score)
+INSERT INTO scores (chef_id, episode_number, season_number, cousine_name, recipe_id,score_1,score_2,score_3, total_score)
 SELECT
     chef_id,
     episode_number,
