@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="loginForm" action="/login" method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <div id="error" style="color: red; display: none;">Incorrect username or password.</div>
+
+    <!-- pass the users variable to a div so it can be accesed by the script --> 
+    <div id="usersData" data-users='<%= JSON.stringify(users) %>'></div>
+
+
+    <!-- script for handling log in-->
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {             
+    event.preventDefault(); // Prevent form submission
+    var usersDataElement = document.getElementById("usersData");
+    var usersData = JSON.parse(usersDataElement.getAttribute("data-users"));
+
+    //DEBUG
+    //console.log(usersData[0].username)
+    
+    // Get username and password
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    if (username === "admin" && password === "password") {
+        // Redirect on successful login
+        window.location.href = "/";
+    }
+
+    if(usersData.length != 0){
+        for (var i=0;i < usersData.length; i++){
+            user = usersData[i];
+            if (username == user.username && password == user._password) {
+                // Redirect on successful login
+                window.location.href = "/";
+                }
+            
+        } 
+    } 
+    
+    //if the username and password don't match either the admin or any user
+    // then display error message
+    document.getElementById("error").style.display = "block";
+});
+    </script>
+</body>
+</html>

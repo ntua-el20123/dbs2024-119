@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 
 // Set 'views' directory for any views being rendered
@@ -6,6 +7,12 @@ app.set('views', __dirname + '/views');
 
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
+
+app.use(session({
+    secret: "SecretKey",
+    resave: false,
+    saveUninitialized: false
+}));
 
 // Import and use routes defined in routes.js
 const routes = require('./routes/routes'); // Import the routes module
