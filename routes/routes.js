@@ -33,4 +33,14 @@ router.get('/theme', async (req, res) => {
     }
 });
 
+router.get('/chef', async (req, res) => {
+    try {
+        const [rows, fields] = await pool.query('SELECT * FROM chef');
+        res.render('chef', { rows });
+    } catch (error) {
+        console.error('Error fetching chef:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 module.exports = router;

@@ -1,0 +1,46 @@
+<!-- views/chef.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Table</title>
+</head>
+<body>
+    <h1>Chef Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth Year</th>
+                <th>Phone Number</th>
+                <th>Image Description</th>
+                <th>Age</th>
+                <th>Years of Work Experience</th>
+                <th>Professional Status</th>
+                <th>Cuisine Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.username %></td>
+                    <td><%= row.first_name %></td>
+                    <td><%= row.last_name %></td>
+                    <td><%= row.birth_year %></td>
+                    <td><%= row.phone_number %></td>
+                    <td><%= row.image_description %></td>
+                    <!-- You'll need to handle displaying the actual_image BLOB data -->
+                    <td><%= row.age %></td>
+                    <td><%= row.years_of_work_experience %></td>
+                    <td><%= row.professional_status %></td>
+                    <td><%= row.cousine_name %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
