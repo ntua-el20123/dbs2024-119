@@ -45,13 +45,7 @@ router.get('/chef', async (req, res) => {
 
 router.get('/login', async (req,res) => {
     try{
-        var sql_query = 'SELECT username,_password FROM chef';
-        const [rows,fields] = await pool.query(sql_query);
-        //DEBUG
-        console.log(rows)
-        row = rows[0]
-        console.log(row.username,row._password)
-        res.render('login',{ users: rows });
+        res.render('login');
     }
     catch(e){
         console.error('Error loading log-in page');
@@ -61,10 +55,59 @@ router.get('/login', async (req,res) => {
 });
 
 router.post('/login', async (req,res) =>{
-    const {username,password} = req.body;
-    req.session.user = {username};
-    console.log(req.session.user)
+    try {
+        //DEBUG
+        console.log(req.body);
+        const { username,password } = req.body;
+
+        var sql_query = "SELECT username,_password FROM chef WHERE username = ?";
+        const [rows,fields] = await pool.query(sql_query, [username]);
+        //DEBUG
+        console.log(rows)
+        if (rows.length > 0 && rows[0]._password == password){
+            req.session.user = {username: username, password: password};
+            //DEBUG
+            console.log(req.session.user);
+            res.redirect('/');
+        }        
+        else{
+            console.log(`user: ${username} with password: ${password} not found`);
+        }
+        
+    }
+    catch(e){
+        console.error('Error while parsing POST request body in /login: ',e);
+        console.log(e.stack);
+        res.status(500).send('Server Error');
+    }
 })
 
+router.get('/signup',async (req,res) => {
+    try{
+        res.render('signUp.ejs');
+    }
+    catch(e){
+        console.error('Error loading sign-up page')
+        console.error(e.stack);
+        res.status(500).send('Server Error');
+    }
+})
+
+router.post('/signup', async (req,res) =>{
+    try {
+        const {username,password,first_name,last_name,birth_year,phone_number,age,years_of_work_experience,professional_status,cousine_name} = req.body;
+
+        var sql_query = "INSERT INTO chef(username,_password,first_name, last_name, birth_year, phone_number, image_description, age, years_of_work_experience, professional_status, cousine_name)\
+         VALUES (?,?,?,?,?,?,NULL,?,?,?,?)";
+
+        await pool.query(sql_query,[username,password,first_name,last_name,birth_year,phone_number,age,years_of_work_experience,professional_status,cousine_name]);
+        
+    }
+    catch(e){
+        console.error('Error while parsing POST request body in /login: ',e);
+        console.log(e.stack);
+        res.status(500).send('Server Error');
+    }
+})
 
 module.exports = router;
