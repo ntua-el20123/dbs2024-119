@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">    
+    
+    <title>Login</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+<body>
+    <h1>Recipe</h1>
+    <div class="container">
+        <div class="container">
+            <div class="row" id="row">
+                <div class="col-md-12">
+                    <div class="card" id="card-container">
+                        <div class="card-body" id="card">
+                        <% if (recipes.length == 0) { %> 
+                            <h1 style="margin-top: 5rem;">No Recipes found!</h1>
+                        <% } else { %>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% recipes.forEach((recipe, _) => { %>
+                                            <tr>
+                                                <td><%= recipe.recipe_name %></td>d>
+                                            </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <a href="/main"><button>Return</button></a>
+
+</body>
+</html>

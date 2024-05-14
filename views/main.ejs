@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">    
+    
+    <title>Login</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+<body>
+    <h1>User Profile</h1>
+    <div class="container">
+        <div class="row" id="row">
+            <div class="col-md-12">
+                <div class="card" id="card-container">
+                    <div class="card-body" id="card">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Birth Year</th>
+                                        <th>Phone Number</th>
+                                        <th>Age</th>
+                                        <th>Year of Work Experience</th>
+                                        <th>Professional Status</th>
+                                        <th>Cousine Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            <tr>
+                                <td><%= chef.username %></td>
+                                <td><%= chef.first_name %></td>
+                                <td><%= chef.last_name %></td>
+                                <td><%= chef.birth_year %></td>
+                                <td><%= chef.phone_number %></td>
+                                <td><%= chef.age %></td>
+                                <td><%= chef.years_of_work_experience %></td>
+                                <td><%= chef.professional_status %></td>
+                                <td><%= chef.cousine_name %></td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/main/recipes"><button>See your recipes</button></a>
+
+</body>
+</html>

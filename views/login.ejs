@@ -9,17 +9,24 @@
     
     <title>Login</title>
 </head>
+
+<style>
+    /* Add CSS for spacing */
+    .button-spacing {
+        margin-top: 10px; /* Adjust the spacing as needed */
+    }
+</style>
+
 <body>
-    <form id="loginForm" action="/login" method="POST">
+    <form id="loginForm" action="/" method="POST">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username"><br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password"><br>
         <button type="submit">Login</button>
     </form>
-    
-    <!-- pass the users variable to a div so it can be accesed by the script --> 
-    <div id="usersData" data-users='<%= JSON.stringify(users) %>'></div>
+
+    <a href="/signup"><button>Signup</button></a>
 
 </body>
 </html>
