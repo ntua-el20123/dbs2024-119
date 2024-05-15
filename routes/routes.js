@@ -141,10 +141,30 @@ router.get('/main/recipes',async (req,res) => {
     res.render('recipes.ejs',{recipes: rows})
    }
    catch(e){
-    console.error('Error loading main page: ',e);
+    console.error('Error loading recipes page');
     console.log(e.stack);
     res.status(500).send('Server Error');
     }
+})
+
+router.get('/main/recipes/:recipeID', async (req,res) =>{
+    try{
+        const recipeID = req.params.recipeID;
+        //DEBUG
+        //console.log(`recipeID:${recipeID}`);
+
+        sql_query = "SELECT recipe.*,ingridient.ingridient_name FROM ingridient\
+        JOIN recipe ON recipe.main_ingridient_id = ingridient.ingridient_id\
+        WHERE ingridient.ingridient_id = ?;"
+        const [rows,fields] = await pool.query(sql_query,[recipeID])
+
+        res.render('recipeInfo.ejs',{recipe: rows[0]});
+    }
+    catch(e){
+        console.error('Error loading recipeID page');
+        console.log(e.stack);
+        res.status(500).send('Server Error');
+        }
 })
 
 module.exports = router;
