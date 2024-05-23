@@ -27,11 +27,11 @@ CREATE TABLE tag (
     PRIMARY KEY(tag_name)
 );
 
-CREATE TABLE ingridient (
-    ingridient_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    ingridient_name VARCHAR(45) NOT NULL UNIQUE,
+CREATE TABLE ingredient (
+    ingredient_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ingredient_name VARCHAR(45) NOT NULL UNIQUE,
     food_group_id SMALLINT UNSIGNED NOT NULL,
-    PRIMARY KEY(ingridient_id),
+    PRIMARY KEY(ingredient_id),
     KEY idx_fk_food_group_id (food_group_id),
     CONSTRAINT fk_food_group_id FOREIGN KEY(food_group_id)
     REFERENCES food_group(food_group_id) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -51,35 +51,35 @@ CREATE TABLE recipe (
     meal_type VARCHAR(45) NOT NULL,
     cousine_name VARCHAR(45),
     theme_name VARCHAR(45),
-    main_ingridient_id SMALLINT UNSIGNED,
+    main_ingredient_id SMALLINT UNSIGNED,
     total_calories INT UNSIGNED AS (4 * carbs_per_serving + 9 * fats_per_serving + 4 * proteins_per_serving) STORED,
     PRIMARY KEY(recipe_id),
     KEY idx_fk_cousine_name (cousine_name),
     KEY idx_fk_theme_name (theme_name),
-    KEY idx_fk_main_ingridient (main_ingridient_id),
+    KEY idx_fk_main_ingredient (main_ingredient_id),
     CONSTRAINT fk_cousine_name FOREIGN KEY (cousine_name)
     REFERENCES cousine (cousine_name) ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT fk_theme_name FOREIGN KEY (theme_name)
     REFERENCES theme (theme_name) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT fk_main_ingridient FOREIGN KEY (main_ingridient_id)
-    REFERENCES ingridient (ingridient_id) ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT fk_main_ingredient FOREIGN KEY (main_ingredient_id)
+    REFERENCES ingredient (ingredient_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-CREATE TABLE recipe_has_ingridient (
+CREATE TABLE recipe_has_ingredient (
     recipe_id SMALLINT UNSIGNED NOT NULL,
-    ingridient_id SMALLINT UNSIGNED NOT NULL,
-    PRIMARY KEY(recipe_id, ingridient_id),
+    ingredient_id SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY(recipe_id, ingredient_id),
     KEY idx_fk_recipe_id (recipe_id),
-    KEY idx_fk_ingridient_id (ingridient_id),
+    KEY idx_fk_ingredient_id (ingredient_id),
     CONSTRAINT fk_recipe_id FOREIGN KEY(recipe_id)
     REFERENCES recipe (recipe_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT fk_ingridient_id FOREIGN KEY(ingridient_id)
-    REFERENCES ingridient (ingridient_id) ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT fk_ingredient_id FOREIGN KEY(ingredient_id)
+    REFERENCES ingredient (ingredient_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE recipe_has_tag (
     tag_name VARCHAR(30) NOT NULL,
-    recipe_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    recipe_id SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY(tag_name, recipe_id),
     KEY idx_fk_tag_name (tag_name),
     KEY idx_fk_recipe_id (recipe_id),
@@ -106,7 +106,7 @@ CREATE TABLE recipe_has_cooking_equipment (
     KEY idx_fk_recipe_id (recipe_id),
     CONSTRAINT fk_equipment_id FOREIGN KEY (equipment_id)
     REFERENCES cooking_equipment(equipment_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT fk_equip_recipe_id FOREIGN KEY(recipe_id)
+    CONSTRAINT fk_recipe_id_ce FOREIGN KEY(recipe_id)
     REFERENCES recipe(recipe_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
@@ -214,7 +214,7 @@ CREATE TABLE scores (
     score_1 SMALLINT NOT NULL CHECK (score_1 > 0 AND score_1 < 6),
     score_2 SMALLINT NOT NULL CHECK (score_2 > 0 AND score_2 < 6),
     score_3 SMALLINT NOT NULL CHECK (score_3 > 0 AND score_3 < 6),
-    total_score FLOAT NOT NULL,
+    total_score FLOAT GENERATED ALWAYS AS ((score_1 + score_2 + score_3) / 3.0) STORED,
     PRIMARY KEY(chef_id, episode_number, season_number, cousine_name, recipe_id),
     KEY idx_fk_chef_id (chef_id),
     KEY idx_fk_episode_number (episode_number),

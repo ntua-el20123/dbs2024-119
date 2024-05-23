@@ -2,19 +2,60 @@
 INSERT INTO food_group (group_name, group_description) VALUES
 ('Grains', 'Food items made from wheat, rice, oats, cornmeal, barley, or another cereal grain'),
 ('Vegetables', 'Edible parts of plants that are consumed by humans or other animals as food'),
-('Fruits', 'Edible parts of flowering plants that are consumed by humans or other animals as food');
+('Fruits', 'Edible parts of flowering plants that are consumed by humans or other animals as food'),
+('Dairy', 'Food items made from milk or milk components'),
+('Protein', 'Food items that are rich in protein, such as meat, poultry, fish, beans, and nuts'),
+('Fats and Oils', 'Food items that are high in fats and oils, such as butter, olive oil, and vegetable oil'),
+('Sweets', 'Food items that are high in sugar, such as candy, cookies, and cakes'),
+('Beverages', 'Drinks that are consumed by humans, such as water, tea, coffee, and soft drinks'),
+('Other', 'Food items that do not fit into the other food groups');
 
 -- Inserting dummy data into the theme table
 INSERT INTO theme (theme_name, theme_description) VALUES
 ('Italian', 'Recipes inspired by Italian cuisine'),
 ('Mediterranean', 'Recipes inspired by Mediterranean cuisine'),
-('Asian', 'Recipes inspired by Asian cuisine');
+('Asian', 'Recipes inspired by Asian cuisine'),
+('Latin', 'Recipes inspired by Latin American cuisine'),
+('European', 'Recipes inspired by European cuisine'),
+('American', 'Recipes inspired by American cuisine'),
+('French', 'Recipes inspired by French cuisine'),
+('Healthy', 'Recipes that are healthy and nutritious'),
+('Quick and Easy', 'Recipes that are quick and easy to prepare'),
+('Vegetarian', 'Recipes that are vegetarian and do not contain meat'),
+('Vegan', 'Recipes that are vegan and do not contain any animal products'),
+('Gluten-Free', 'Recipes that are gluten-free and do not contain gluten'),
+('Low-Carb', 'Recipes that are low in carbohydrates'),
+('Low-Fat', 'Recipes that are low in fat'),
+('Low-Calorie', 'Recipes that are low in calories'),
+('High-Protein', 'Recipes that are high in protein'),
+('Low-Sodium', 'Recipes that are low in sodium'),
+('Dairy-Free', 'Recipes that do not contain dairy products'),
+('Nut-Free', 'Recipes that do not contain nuts'),
+('Soy-Free', 'Recipes that do not contain soy products');
 
 -- Inserting dummy data into the cousine table
 INSERT INTO cousine (cousine_name) VALUES
 ('Italian'),
 ('Greek'),
-('Chinese');
+('Chinese'),
+('Japanese'),
+('Indian'),
+('Mexican'),
+('French'),
+('Thai'),
+('Korean'),
+('Vietnamese'),
+('Spanish'),
+('Lebanese'),
+('Turkish'),
+('Moroccan'),
+('Brazilian'),
+('Peruvian'),
+('Argentinian'),
+('Russian'),
+('German'),
+('British'),
+('American');
 
 -- Inserting dummy data into the tag table
 INSERT INTO tag (tag_name) VALUES
@@ -23,20 +64,115 @@ INSERT INTO tag (tag_name) VALUES
 ('Vegetarian');
 
 -- Inserting dummy data into the ingredient table
-INSERT INTO ingridient (ingridient_name, food_group_id) VALUES
+INSERT INTO ingredient (ingredient_name, food_group_id) VALUES
 ('Pasta', 1),
 ('Tomato', 2),
-('Chicken', 2);
+('Chicken', 5),
+('Vegetables', 2),
+('Feta Cheese', 4),
+('Olive Oil', 6),
+('Rice', 1),
+('Lettuce', 2),
+('Cucumber', 2),
+('Bell Pepper', 2),
+('Carrot', 2),
+('Chicken Breast', 5),
+('Broccoli', 2),
+('Soy Sauce', 6),
+('Garlic', 2),
+('Onion', 2),
+('Ginger', 2),
+('Beef', 5),
+('Pork', 5),
+('Shrimp', 5),
+('Fish', 5),
+('Egg', 5),
+('Milk', 4),
+('Butter', 6),
+('Flour', 1),
+('Sugar', 7),
+('Chocolate', 7),
+('Coffee', 8),
+('Tea', 8),
+('Water', 8),
+('Salt', 9),
+('Pepper', 9),
+('Spices', 9),
+('Herbs', 9),
+('Nuts', 9),
+('Seeds', 9),
+('Beans', 9),
+('Tofu', 5),
+('Mushrooms', 2),
+('Cheese', 4),
+('Bread', 1),
+('Honey', 7),
+('Syrup', 7),
+('Jam', 7),
+('Yogurt', 4),
+('Eggplant', 2),
+('Zucchini', 2),
+('Pumpkin', 2),
+('Squash', 2),
+('Corn', 2);
+
 
 -- Inserting dummy data into the recipe table
 INSERT INTO recipe (
     cooking_time, prep_time, difficulty, recipe_name, image, carbs_per_serving, 
-    fats_per_serving, proteins_per_serving, total_calories, number_of_servings, 
-    meal_type, cousine_name, theme_name, main_ingridient_id
+    fats_per_serving, proteins_per_serving, number_of_servings, 
+    meal_type, cousine_name, theme_name, main_ingredient_id
 ) VALUES
-('00:45:00', '00:20:00', 3, 'Spaghetti Bolognese', NULL, 50, 20, 30, 500, 4, 'Main Course', 'Italian', 'Italian', 1),
-('01:00:00', '00:30:00', 4, 'Greek Salad', NULL, 20, 10, 5, 150, 2, 'Appetizer', 'Greek', 'Mediterranean', 2),
-('00:30:00', '00:15:00', 2, 'Stir-Fried Chicken with Vegetables', NULL, 10, 15, 20, 250, 3, 'Main Course', 'Chinese', 'Asian', 3);
+('00:45:00', '00:20:00', 3, 'Spaghetti Bolognese', NULL, 50, 20, 30, 4, 'Main Course', 'Italian', 'Italian', 1),
+('01:00:00', '00:30:00', 4, 'Greek Salad', NULL, 20, 10, 5, 2, 'Appetizer', 'Greek', 'Mediterranean', 2),
+('00:30:00', '00:15:00', 2, 'Stir-Fried Chicken with Vegetables', NULL, 10, 15, 20, 3, 'Main Course', 'Chinese', 'Asian', 3),
+('00:45:00', '00:20:00', 3, 'Sushi Rolls', NULL, 30, 10, 15, 4, 'Main Course', 'Japanese', 'Asian', 4),
+('01:30:00', '00:45:00', 5, 'Chicken Tikka Masala', NULL, 40, 25, 35, 4, 'Main Course', 'Indian', 'Asian', 5),
+('01:15:00', '00:30:00', 4, 'Tacos', NULL, 30, 20, 25, 4, 'Main Course', 'Mexican', 'Latin', 6),
+('01:00:00', '00:30:00', 4, 'Coq au Vin', NULL, 20, 30, 25, 4, 'Main Course', 'French', 'French', 7),
+('00:45:00', '00:20:00', 3, 'Pad Thai', NULL, 40, 15, 20, 4, 'Main Course', 'Thai', 'Asian', 8),
+('00:30:00', '00:15:00', 2, 'Bibimbap', NULL, 30, 20, 25, 4, 'Main Course', 'Korean', 'Asian', 9),
+('00:45:00', '00:20:00', 3, 'Pho', NULL, 40, 10, 30, 4, 'Main Course', 'Vietnamese', 'Asian', 10),
+('01:00:00', '00:30:00', 4, 'Paella', NULL, 30, 20, 25, 4, 'Main Course', 'Spanish', 'Mediterranean', 11),
+('01:15:00', '00:45:00', 5, 'Hummus', NULL, 10, 15, 20, 3, 'Appetizer', 'Lebanese', 'Mediterranean', 12),
+('01:30:00', '00:45:00', 5, 'Kebab', NULL, 30, 20, 25, 4, 'Main Course', 'Turkish', 'Mediterranean', 13),
+('01:00:00', '00:30:00', 4, 'Couscous', NULL, 20, 30, 25, 4, 'Main Course', 'Moroccan', 'Mediterranean', 14),
+('00:45:00', '00:20:00', 3, 'Feijoada', NULL, 40, 15, 20, 4, 'Main Course', 'Brazilian', 'Latin', 15),
+('00:30:00', '00:15:00', 2, 'Ceviche', NULL, 30, 20, 25, 4, 'Appetizer', 'Peruvian', 'Latin', 16),
+('00:45:00', '00:20:00', 3, 'Empanadas', NULL, 40, 10, 30, 4, 'Main Course', 'Argentinian', 'Latin', 17),
+('01:00:00', '00:30:00', 4, 'Borscht', NULL, 30, 20, 25, 4, 'Main Course', 'Russian', 'European', 18),
+('01:15:00', '00:45:00', 5, 'Schnitzel', NULL, 20, 30, 25, 4, 'Main Course', 'German', 'European', 19),
+('01:30:00', '00:45:00', 5, 'Fish and Chips', NULL, 10, 15, 20, 3, 'Main Course', 'British', 'European', 20),
+('01:00:00', '00:30:00', 4, 'Burgers', NULL, 30, 20, 25, 4, 'Main Course', 'American', 'American', 21),
+('00:45:00', '00:20:00', 3, 'Spaghetti Carbonara', NULL, 40, 15, 20, 4, 'Main Course', 'Italian', 'Italian', 22),
+('00:30:00', '00:15:00', 2, 'Greek Gyros', NULL, 30, 20, 25, 4, 'Main Course', 'Greek', 'Mediterranean', 23),
+('00:45:00', '00:20:00', 3, 'Sweet and Sour Chicken', NULL, 40, 10, 30, 4, 'Main Course', 'Chinese', 'Asian', 24),
+('01:00:00', '00:30:00', 4, 'Sashimi', NULL, 30, 10, 15, 4, 'Main Course', 'Japanese', 'Asian', 25),
+('01:30:00', '00:45:00', 5, 'Butter Chicken', NULL, 40, 25, 35, 4, 'Main Course', 'Indian', 'Asian', 26),
+('01:15:00', '00:30:00', 4, 'Tamales', NULL, 30, 20, 25, 4, 'Main Course', 'Mexican', 'Latin', 27),
+('01:00:00', '00:30:00', 4, 'Ratatouille', NULL, 20, 30, 25, 4, 'Main Course', 'French', 'French', 28),
+('00:45:00', '00:20:00', 3, 'Green Curry', NULL, 40, 15, 20, 4, 'Main Course', 'Thai', 'Asian', 29),
+('00:30:00', '00:15:00', 2, 'Bulgogi', NULL, 30, 20, 25, 4, 'Main Course', 'Korean', 'Asian', 30),
+('00:45:00', '00:20:00', 3, 'Bun Cha', NULL, 40, 10, 30, 4, 'Main Course', 'Vietnamese', 'Asian', 31),
+('01:00:00', '00:30:00', 4, 'Gazpacho', NULL, 30, 20, 25, 4, 'Main Course', 'Spanish', 'Mediterranean', 32),
+('01:15:00', '00:45:00', 5, 'Falafel', NULL, 10, 15, 20, 3, 'Appetizer', 'Lebanese', 'Mediterranean', 33),
+('01:30:00', '00:45:00', 5, 'Doner Kebab', NULL, 30, 20, 25, 4, 'Main Course', 'Turkish', 'Mediterranean', 34),
+('01:00:00', '00:30:00', 4, 'Tagine', NULL, 20, 30, 25, 4, 'Main Course', 'Moroccan', 'Mediterranean', 35),
+('00:45:00', '00:20:00', 3, 'Pao de Queijo', NULL, 40, 15, 20, 4, 'Main Course', 'Brazilian', 'Latin', 36),
+('00:30:00', '00:15:00', 2, 'Causa', NULL, 30, 20, 25, 4, 'Appetizer', 'Peruvian', 'Latin', 37),
+('00:45:00', '00:20:00', 3, 'Milanesa', NULL, 40, 10, 30, 4, 'Main Course', 'Argentinian', 'Latin', 38),
+('01:00:00', '00:30:00', 4, 'Blini', NULL, 30, 20, 25, 4, 'Main Course', 'Russian', 'European', 39),
+('01:15:00', '00:45:00', 5, 'Sauerbraten', NULL, 20, 30, 25, 4, 'Main Course', 'German', 'European', 40),
+('01:30:00', '00:45:00', 5, 'Shepherd''s Pie', NULL, 10, 15, 20, 3, 'Main Course', 'British', 'European', 41),
+('01:00:00', '00:30:00', 4, 'Mac and Cheese', NULL, 30, 20, 25, 4, 'Main Course', 'American', 'American', 42),
+('00:45:00', '00:20:00', 3, 'Pasta Carbonara', NULL, 40, 15, 20, 4, 'Main Course', 'Italian', 'Italian', 43),
+('00:30:00', '00:15:00', 2, 'Souvlaki', NULL, 30, 20, 25, 4, 'Main Course', 'Greek', 'Mediterranean', 44),
+('00:45:00', '00:20:00', 3, 'General Tso''s Chicken', NULL, 40, 10, 30, 4, 'Main Course', 'Chinese', 'Asian', 45),
+('01:00:00', '00:30:00', 4, 'Tempura', NULL, 30, 10, 15, 4, 'Main Course', 'Japanese', 'Asian', 46),
+('01:30:00', '00:45:00', 5, 'Butter Paneer', NULL, 40, 25, 35, 4, 'Main Course', 'Indian', 'Asian', 47),
+('01:15:00', '00:30:00', 4, 'Tacos al Pastor', NULL, 30, 20, 25, 4, 'Main Course', 'Mexican', 'Latin', 48),
+('01:00:00', '00:30:00', 4, 'Cassoulet', NULL, 20, 30, 25, 4, 'Main Course', 'French', 'French', 49),
+('00:45:00', '00:20:00', 3, 'Tom Yum Soup', NULL, 40, 15, 20, 4, 'Main Course', 'Thai', 'Asian', 50);
 
 -- Inserting dummy data into the cooking_equipment table
 INSERT INTO cooking_equipment (equipment_name, instructions, image, image_description) VALUES
@@ -44,7 +180,6 @@ INSERT INTO cooking_equipment (equipment_name, instructions, image, image_descri
 ('Oven', 'Use to bake or roast food', NULL, NULL),
 ('Knife', 'Use to cut or chop ingredients', NULL, NULL);
 
--- Inserting dummy data into the chef table
 -- Inserting dummy data into the chef table
 INSERT INTO chef (
     first_name, last_name, birth_year, phone_number, image_description,
@@ -100,8 +235,7 @@ INSERT INTO chef (
 ('Olivia', 'Lee', '1991', 555555555, NULL, NULL, 30, 6, 'Line Cook'),
 ('David', 'Wong', '1987', 666666666, NULL, NULL, 34, 15, 'Head Chef'),
 ('Sophia', 'Garcia', '1983', 777777777, NULL, NULL, 38, 20, 'Executive Sous Chef'),
-('Emma', 'Martinez', '1988', 888888888, NULL, NULL, 33, 17, 'Sous Chef'),
-('Daniel', 'Johnson', '1984', 999999999, NULL, NULL, 37, 12, 'Executive Chef');
+('Emma', 'Martinez', '1988', 888888888, NULL, NULL, 33, 17, 'Sous Chef');
 
 -- Inserting dummy data into the specializes_in table
 INSERT INTO specializes_in (chef_id, cousine_name) VALUES
@@ -118,24 +252,78 @@ INSERT INTO episode (episode_number, season_number) VALUES
 
 -- Inserting dummy data into the judge_in_episode table
 INSERT INTO judge_in_episode (chef_id, episode_number, season_number, judge_number) VALUES
-(1, 1, 1, 1),
-(2, 1, 1, 2),
-(1, 2, 1, 1),
-(2, 2, 1, 2);
+(1, 1, 1, 1), (2, 2, 1, 1), (3, 3, 1, 1), (4, 4, 1, 1), (5, 5, 1, 1),
+(6, 6, 1, 1), (7, 7, 1, 1), (8, 8, 1, 1), (9, 9, 1, 1), (10, 10, 1, 1),
+
+(11, 1, 2, 1), (12, 2, 2, 1), (13, 3, 2, 1), (14, 4, 2, 1), (15, 5, 2, 1),
+(16, 6, 2, 1), (17, 7, 2, 1), (18, 8, 2, 1), (19, 9, 2, 1), (20, 10, 2, 1),
+
+(21, 1, 3, 1), (22, 2, 3, 1), (23, 3, 3, 1), (24, 4, 3, 1), (25, 5, 3, 1),
+(26, 6, 3, 1), (27, 7, 3, 1), (28, 8, 3, 1), (29, 9, 3, 1), (30, 10, 3, 1),
+
+(31, 1, 4, 1), (32, 2, 4, 1), (33, 3, 4, 1), (34, 4, 4, 1), (35, 5, 4, 1),
+(36, 6, 4, 1), (37, 7, 4, 1), (38, 8, 4, 1), (39, 9, 4, 1), (40, 10, 4, 1),
+
+(41, 1, 5, 1), (42, 2, 5, 1), (43, 3, 5, 1), (44, 4, 5, 1), (45, 5, 5, 1),
+(46, 6, 5, 1), (47, 7, 5, 1), (48, 8, 5, 1), (49, 9, 5, 1), (50, 10, 5, 1);
+
+-- Ensure the random function for score generation
+SET @max_score = 5;
 
 -- Inserting dummy data into the scores table
 INSERT INTO scores (
     chef_id, episode_number, season_number, cousine_name, recipe_id, 
-    score_1, score_2, score_3, total_score
+    score_1, score_2, score_3
 ) VALUES
-(1, 1, 1, 'Italian', 1, 5, 4, 3, 4),
-(2, 1, 1, 'Greek', 2, 4, 3, 5, 4.5),
-(1, 2, 1, 'Italian', 1, 4, 5, 4, 4.33),
-(2, 2, 1, 'Greek', 2, 3, 4, 5, 4),
-(1, 1, 2, 'Italian', 1, 4, 5, 3, 4),
-(2, 1, 2, 'Greek', 2, 5, 4, 3, 4),
-(1, 2, 2, 'Italian', 1, 3, 4, 5, 4),
-(2, 2, 2, 'Greek', 2, 4, 3, 5, 4.33);
+(2, 1, 1, 'Italian', 1, 5, 3, 4),
+(3, 2, 1, 'Greek', 2, 2, 5, 4),
+(4, 3, 1, 'Chinese', 3, 1, 5, 5),
+(5, 4, 1, 'Japanese', 4, 3, 3, 4),
+(6, 5, 1, 'Indian', 5, 2, 2, 3),
+(7, 6, 1, 'Mexican', 6, 4, 4, 5),
+(8, 7, 1, 'French', 7, 5, 1, 2),
+(9, 8, 1, 'Thai', 8, 5, 2, 4),
+(10, 9, 1, 'Korean', 9, 3, 4, 1),
+(11, 10, 1, 'Vietnamese', 10, 4, 3, 2),
+(12, 1, 2, 'Spanish', 11, 1, 5, 4),
+(13, 2, 2, 'Lebanese', 12, 2, 5, 3),
+(14, 3, 2, 'Turkish', 13, 4, 2, 5),
+(15, 4, 2, 'Moroccan', 14, 3, 1, 5),
+(16, 5, 2, 'Brazilian', 15, 5, 4, 2),
+(17, 6, 2, 'Peruvian', 16, 5, 3, 1),
+(18, 7, 2, 'Argentinian', 17, 2, 5, 4),
+(19, 8, 2, 'Russian', 18, 1, 5, 3),
+(20, 9, 2, 'German', 19, 4, 2, 5),
+(21, 10, 2, 'British', 20, 3, 5, 1),
+(22, 1, 3, 'American', 21, 5, 1, 4),
+(23, 2, 3, 'Italian', 22, 5, 3, 2),
+(24, 3, 3, 'Greek', 23, 1, 4, 5),
+(25, 4, 3, 'Chinese', 24, 2, 5, 1),
+(26, 5, 3, 'Japanese', 25, 3, 5, 2),
+(27, 6, 3, 'Indian', 26, 4, 1, 5),
+(28, 7, 3, 'Mexican', 27, 5, 2, 3),
+(29, 8, 3, 'French', 28, 5, 4, 2),
+(30, 9, 3, 'Thai', 29, 1, 3, 5),
+(31, 10, 3, 'Korean', 30, 2, 5, 4),
+(32, 1, 4, 'Vietnamese', 31, 3, 4, 5),
+(33, 2, 4, 'Spanish', 32, 4, 2, 5),
+(34, 3, 4, 'Lebanese', 33, 1, 5, 5),
+(35, 4, 4, 'Turkish', 34, 2, 5, 3),
+(36, 5, 4, 'Moroccan', 35, 4, 3, 1),
+(37, 6, 4, 'Brazilian', 36, 5, 1, 2),
+(38, 7, 4, 'Peruvian', 37, 3, 2, 5),
+(39, 8, 4, 'Argentinian', 38, 5, 4, 1),
+(40, 9, 4, 'Russian', 39, 1, 3, 5),
+(41, 10, 4, 'German', 40, 2, 4, 5),
+(42, 1, 5, 'British', 41, 3, 5, 2),
+(43, 2, 5, 'American', 42, 4, 5, 3),
+(44, 3, 5, 'Italian', 43, 1, 2, 5),
+(45, 4, 5, 'Greek', 44, 2, 3, 4),
+(46, 5, 5, 'Chinese', 45, 3, 4, 1),
+(47, 6, 5, 'Japanese', 46, 4, 1, 5),
+(48, 7, 5, 'Indian', 47, 5, 2, 3),
+(49, 8, 5, 'Mexican', 48, 5, 3, 4),
+(50, 9, 5, 'French', 49, 1, 4, 2);
 
 -- Inserting dummy data into the cook_has_recipe table
 INSERT INTO cook_has_recipe (chef_id, recipe_id) VALUES
