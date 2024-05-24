@@ -1,6 +1,6 @@
 import MySQLdb
 
-def insert_image(db_params, table_name, column_name, image_path, identifier_column, identifier_value):
+def insert_image_with_description(db_params, table_name, image_column, image_path, description_column, description_value, identifier_column, identifier_value):
     # Connect to the database
     db = MySQLdb.connect(**db_params)
     cursor = db.cursor()
@@ -12,12 +12,12 @@ def insert_image(db_params, table_name, column_name, image_path, identifier_colu
     # Prepare the SQL query
     query = f"""
     UPDATE {table_name}
-    SET {column_name} = %s
+    SET {image_column} = %s, {description_column} = %s
     WHERE {identifier_column} = %s
     """
     
     # Execute the query
-    cursor.execute(query, (binary_data, identifier_value))
+    cursor.execute(query, (binary_data, description_value, identifier_value))
 
     # Commit the transaction
     db.commit()
@@ -35,6 +35,9 @@ db_params = {
 }
 
 # Example usage
-insert_image(db_params, 'recipe', 'image', 'path/to/your/image.jpg', 'recipe_id', 1)
-insert_image(db_params, 'cooking_equipment', 'actual_image', 'chef_1.jpg', 'equipment_id', 1)
-insert_image(db_params, 'chef', 'actual_image', 'chef_1.jpg', 'chef_id', 1)
+#insert_image_with_description(db_params, 'recipe', 'image', 'path/to/your/image.jpg', 'description', 'This is a delicious recipe.', 'recipe_id', 1)
+#insert_image_with_description(db_params, 'cooking_equipment', 'actual_image', 'chef_1.jpg', 'description', 'This is a versatile piece of cooking equipment.', 'equipment_id', 1)
+for i in range(1,51):
+    path_to_image = "images/chefs/chef" + str(i) + ".jpg"
+    print(f"adding image {path_to_image} to chef with id: {i}")
+    insert_image_with_description(db_params, 'chef', 'actual_image', path_to_image, 'image_description', 'This is a renowned chef.', 'chef_id', i)

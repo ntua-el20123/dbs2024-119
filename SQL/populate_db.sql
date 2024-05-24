@@ -112,7 +112,7 @@ INSERT INTO tag (tag_name) VALUES
 ('Savory and Sweet and Umami');
 
 -- Inserting dummy data into the ingredient table
-INSERT INTO ingredient (ingredient_name, food_group_id) VALUES
+INSERT INTO ingridient (ingridient_name, food_group_id) VALUES
 ('Pasta', 1),
 ('Tomato', 2),
 ('Chicken', 5),
@@ -169,7 +169,7 @@ INSERT INTO ingredient (ingredient_name, food_group_id) VALUES
 INSERT INTO recipe (
     cooking_time, prep_time, difficulty, recipe_name, image, carbs_per_serving, 
     fats_per_serving, proteins_per_serving, number_of_servings, 
-    meal_type, cousine_name, theme_name, main_ingredient_id
+    meal_type, cousine_name, theme_name, main_ingridient_id
 ) VALUES
 ('00:45:00', '00:20:00', 3, 'Spaghetti Bolognese', NULL, 50, 20, 30, 4, 'Main Course', 'Italian', 'Italian', 1),
 ('01:00:00', '00:30:00', 4, 'Greek Salad', NULL, 20, 10, 5, 2, 'Appetizer', 'Greek', 'Mediterranean', 2),
@@ -224,7 +224,7 @@ INSERT INTO recipe (
 ('00:30:00', '00:15:00', 2, 'Kimchi Fried Rice', NULL, 30, 20, 25, 4, 'Main Course', 'Korean', 'Asian', 51);
 
 -- Inserting dummy data into the recipe_has_ingredient table
-INSERT INTO recipe_has_ingredient (recipe_id, ingredient_id) VALUES
+INSERT INTO recipe_has_ingridient (recipe_id, ingridient_id) VALUES
 (12, 4), (32, 37), (10, 34), (45, 10), (1, 49), (42, 11), (3, 22), (33, 20), (10, 27), (37, 8),
 (45, 21), (36, 18), (32, 14), (13, 10), (3, 42), (44, 49), (22, 21), (37, 19), (45, 32), (39, 46),
 (31, 42), (33, 15), (15, 9), (50, 40), (39, 3), (19, 34), (44, 33), (31, 17), (22, 14), (5, 7),
@@ -316,94 +316,8 @@ INSERT INTO recipe_has_cooking_equipment (recipe_id, equipment_id) VALUES
 (28, 8), (27, 18), (45, 33), (19, 14), (9, 40), (26, 19), (12, 2), (50, 4), (7, 33), (22, 15),
 (14, 47), (2, 46), (20, 27), (39, 40), (14, 29), (2, 9), (37, 40), (14, 38), (3, 47), (6, 9);
 
--- Inserting dummy data into the tips table
-INSERT INTO tips (tip_number, tip_description, recipe_id) VALUES
-(1, 'Add a pinch of sugar to balance the acidity.', 1),
-(1, 'Let the dough rise for a fluffy texture.', 2),
-(1, 'Marinate the meat overnight for a richer taste.', 3),
-(1, 'Use a sharp knife for precise cuts.', 4),
-(1, 'Chill the dough before baking for better shape.', 5),
-(1, 'Mix the dry ingredients separately before adding.', 6),
-(1, 'Use a cast iron skillet for even heat distribution.', 7),
-(1, 'Let the sauce reduce for a thicker consistency.', 8),
-(1, 'Chill the dough before baking for better shape.', 9),
-(1, 'Serve with a side dish to complement the main course.', 10),
-(1, 'Chill the dough before baking for better shape.', 11),
-(1, 'Mix the dry ingredients separately before adding.', 12),
-(1, 'Let the sauce reduce for a thicker consistency.', 13),
-(1, 'Use a cast iron skillet for even heat distribution.', 14),
-(1, 'Use unsalted butter to control the salt level.', 15),
-(1, 'Use a non-stick pan for easy cleaning.', 16),
-(1, 'Use a silicone spatula to scrape the bowl clean.', 17),
-(1, 'Use parchment paper for easy cleanup.', 18),
-(1, 'Grill the vegetables for a smoky flavor.', 19),
-(1, 'Use a mortar and pestle to grind the spices.', 20),
-(1, 'Use a non-stick pan for easy cleaning.', 21),
-(1, 'Add a dash of hot sauce for some heat.', 22),
-(1, 'Roast the nuts before adding for extra crunch.', 23),
-(1, 'Use unsalted butter to control the salt level.', 24),
-(1, 'Use a thermometer to check the doneness of the meat.', 25),
-(1, 'Use unsalted butter to control the salt level.', 26),
-(1, 'Use a non-stick pan for easy cleaning.', 27),
-(1, 'Use a food processor for quick chopping.', 28),
-(1, 'Let the dish rest before serving to enhance the flavor.', 29),
-(1, 'Roast the nuts before adding for extra crunch.', 30),
-(1, 'Garnish with fresh herbs before serving.', 31),
-(1, 'Use a blender for a smooth sauce.', 32),
-(1, 'Use fresh herbs for a vibrant flavor.', 33),
-(1, 'Use homemade broth for a richer taste.', 34),
-(1, 'Add a bit of salt to enhance the sweetness.', 35),
-(1, 'Serve with a dollop of whipped cream.', 36),
-(1, 'Use a fine-mesh sieve to strain the sauce.', 37),
-(1, 'Add a splash of vanilla extract for a better flavor.', 38),
-(1, 'Serve with a sprinkle of powdered sugar on top.', 39),
-(1, 'Use a food processor for quick chopping.', 40),
-(1, 'Add some grated cheese on top before serving.', 41),
-(1, 'Serve with a wedge of lemon on the side.', 42),
-(1, 'Use a silicone spatula to scrape the bowl clean.', 43),
-(2, 'Use parchment paper for easy cleanup.', 37),
-(3, 'Use a thermometer to check the doneness of the meat.', 43),
-(2, 'Mix the ingredients thoroughly for even flavor distribution.', 49),
-(2, 'Let the dessert cool before slicing.', 24),
-(2, 'Add a splash of lemon juice for a zesty flavor.', 36),
-(3, 'Add a pinch of sugar to balance the acidity.', 44),
-(2, 'Mix the ingredients thoroughly for even flavor distribution.', 15),
-(2, 'Mix the ingredients thoroughly for even flavor distribution.', 7),
-(2, 'Add herbs at the end for a fresh taste.', 5),
-(2, 'Let the sauce reduce for a thicker consistency.', 51),
-(2, 'Season the dish to taste.', 46),
-(3, 'Use fresh herbs for a vibrant flavor.', 5),
-(2, 'Add a splash of lemon juice for a zesty flavor.', 27),
-(3, 'Marinate the meat overnight for a richer taste.', 51),
-(2, 'Let the dessert cool before slicing.', 40),
-(2, 'Marinate the meat overnight for a richer taste.', 25),
-(2, 'Add a dash of hot sauce for some heat.', 33),
-(2, 'Use a non-stick pan for easy cleaning.', 34),
-(3, 'Serve with a side dish to complement the main course.', 15),
-(3, 'Serve with a crusty bread on the side.', 14),
-(2, 'Use parchment paper for easy cleanup.', 1),
-(3, 'Serve with a crusty bread on the side.', 18),
-(3, 'Add a bit of salt to enhance the sweetness.', 34),
-(2, 'Let the sauce reduce for a thicker consistency.', 29),
-(2, 'Serve with a dollop of whipped cream.', 31),
-(3, 'Grate the cheese freshly for a better texture.', 25),
-(2, 'Use a non-stick pan for easy cleaning.', 2),
-(3, 'Let the meat rest before slicing to retain the juices.', 1),
-(2, 'Roast the nuts before adding for extra crunch.', 39),
-(3, 'Add a splash of vanilla extract for a better flavor.', 31),
-(3, 'Stir the dish occasionally to prevent burning.', 21),
-(3, 'Use low heat for slow cooking.', 29),
-(2, 'Preheat the oven for even cooking.', 19),
-(2, 'Add a dollop of cream for a richer taste.', 41),
-(2, 'Mix the dry ingredients separately before adding.', 6),
-(2, 'Roast the nuts before adding for extra crunch.', 42),
-(3, 'Let the dessert cool before slicing.', 9),
-(3, 'Add herbs at the end for a fresh taste.', 8),
-(3, 'Let the dish rest before serving to enhance the flavor.', 13),
-(2, 'Use a sharp knife for precise cuts.', 17),
-(3, 'Use a fine-mesh sieve to strain the sauce.', 11),
-(3, 'Serve with a sprinkle of powdered sugar on top.', 26),
-(2, 'Serve with a dollop of whipped cream.', 30);
+-- Inserting dummy data into the tips tableError Code: 1062. Duplicate entry '2-32' for key 'steps.PRIMARY'
+
 
 -- Inserting dummy data into the steps table
 INSERT INTO steps (step_number, step_description, recipe_id) VALUES
@@ -474,7 +388,6 @@ INSERT INTO steps (step_number, step_description, recipe_id) VALUES
 (1, 'Grill the meat and serve with noodles.', 31),
 (2, 'Prepare the gazpacho with fresh vegetables.', 32),
 (1, 'Blend the vegetables until smooth.', 32),
-(2, 'Chill the soup before serving.', 32),
 (1, 'Blend the chickpeas and form into balls.', 33),
 (2, 'Fry the falafel until golden brown.', 33),
 (1, 'Season and grill the meat.', 34),
