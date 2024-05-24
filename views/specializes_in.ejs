@@ -1,0 +1,29 @@
+<!-- views/specializes_in.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specializes In Table</title>
+</head>
+<body>
+    <h1>Specializes In Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Chef ID</th>
+                <th>Cuisine Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.chef_id %></td>
+                    <td><%= row.cousine_name %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

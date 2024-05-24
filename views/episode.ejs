@@ -1,0 +1,35 @@
+<!-- views/episode.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode Table</title>
+</head>
+<body>
+    <h1>Episode Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Episode Number</th>
+                <th>Season Number</th>
+                <th>Theme Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.episode_number %></td>
+                    <td><%= row.season_number %></td>
+                    <td><%= row.theme_name %></td>
+                    <td><%= row.location %></td>
+                    <td><%= row.date %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

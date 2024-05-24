@@ -1,0 +1,55 @@
+<!-- views/recipe.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Table</title>
+</head>
+<body>
+    <h1>Recipe Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Recipe ID</th>
+                <th>Cooking Time</th>
+                <th>Prep Time</th>
+                <th>Difficulty</th>
+                <th>Recipe Name</th>
+                <th>Image</th>
+                <th>Carbs per Serving</th>
+                <th>Fats per Serving</th>
+                <th>Proteins per Serving</th>
+                <th>Number of Servings</th>
+                <th>Meal Type</th>
+                <th>Cuisine Name</th>
+                <th>Theme Name</th>
+                <th>Main Ingredient ID</th>
+                <th>Total Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.recipe_id %></td>
+                    <td><%= row.cooking_time %></td>
+                    <td><%= row.prep_time %></td>
+                    <td><%= row.difficulty %></td>
+                    <td><%= row.recipe_name %></td>
+                    <td><%= row.image ? 'Yes' : 'No' %></td>
+                    <td><%= row.carbs_per_serving %></td>
+                    <td><%= row.fats_per_serving %></td>
+                    <td><%= row.proteins_per_serving %></td>
+                    <td><%= row.number_of_servings %></td>
+                    <td><%= row.meal_type %></td>
+                    <td><%= row.cousine_name %></td>
+                    <td><%= row.theme_name %></td>
+                    <td><%= row.main_ingredient_id %></td>
+                    <td><%= row.total_calories %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

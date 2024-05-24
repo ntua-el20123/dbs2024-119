@@ -1,0 +1,31 @@
+<!-- views/ingredient.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredient Table</title>
+</head>
+<body>
+    <h1>Ingredient Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Ingredient ID</th>
+                <th>Ingredient Name</th>
+                <th>Food Group ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.ingredient_id %></td>
+                    <td><%= row.ingredient_name %></td>
+                    <td><%= row.food_group_id %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

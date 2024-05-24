@@ -1,0 +1,29 @@
+<!-- views/cooking_equipment.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking Equipment Table</title>
+</head>
+<body>
+    <h1>Cooking Equipment Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Equipment ID</th>
+                <th>Equipment Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.equipment_id %></td>
+                    <td><%= row.equipment_name %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
