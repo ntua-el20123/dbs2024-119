@@ -61,7 +61,55 @@ INSERT INTO cousine (cousine_name) VALUES
 INSERT INTO tag (tag_name) VALUES
 ('Healthy'),
 ('Quick and Easy'),
-('Vegetarian');
+('Vegetarian'),
+('Vegan'),
+('Gluten-Free'),
+('Low-Carb'),
+('Low-Fat'),
+('Low-Calorie'),
+('High-Protein'),
+('Low-Sodium'),
+('Dairy-Free'),
+('Nut-Free'),
+('Soy-Free'),
+('Spicy'),
+('Sweet'),
+('Savory'),
+('Sour'),
+('Bitter'),
+('Umami'),
+('Fruity'),
+('Herbal'),
+('Earthy'),
+('Floral'),
+('Citrusy'),
+('Creamy'),
+('Crunchy'),
+('Tender'),
+('Juicy'),
+('Crispy'),
+('Soft'),
+('Chewy'),
+('Salty'),
+('Sweet and Sour'),
+('Savory and Sweet'),
+('Spicy and Sweet'),
+('Spicy and Sour'),
+('Savory and Sour'),
+('Savory and Spicy'),
+('Savory and Bitter'),
+('Sweet and Bitter'),
+('Sweet and Umami'),
+('Savory and Umami'),
+('Sour and Umami'),
+('Bitter and Umami'),
+('Spicy and Umami'),
+('Savory and Spicy and Sweet'),
+('Savory and Spicy and Sour'),
+('Savory and Spicy and Bitter'),
+('Savory and Spicy and Umami'),
+('Savory and Sweet and Bitter'),
+('Savory and Sweet and Umami');
 
 -- Inserting dummy data into the ingredient table
 INSERT INTO ingredient (ingredient_name, food_group_id) VALUES
@@ -114,8 +162,8 @@ INSERT INTO ingredient (ingredient_name, food_group_id) VALUES
 ('Zucchini', 2),
 ('Pumpkin', 2),
 ('Squash', 2),
-('Corn', 2);
-
+('Corn', 2),
+('Potato', 2);
 
 -- Inserting dummy data into the recipe table
 INSERT INTO recipe (
@@ -172,13 +220,101 @@ INSERT INTO recipe (
 ('01:30:00', '00:45:00', 5, 'Butter Paneer', NULL, 40, 25, 35, 4, 'Main Course', 'Indian', 'Asian', 47),
 ('01:15:00', '00:30:00', 4, 'Tacos al Pastor', NULL, 30, 20, 25, 4, 'Main Course', 'Mexican', 'Latin', 48),
 ('01:00:00', '00:30:00', 4, 'Cassoulet', NULL, 20, 30, 25, 4, 'Main Course', 'French', 'French', 49),
-('00:45:00', '00:20:00', 3, 'Tom Yum Soup', NULL, 40, 15, 20, 4, 'Main Course', 'Thai', 'Asian', 50);
+('00:45:00', '00:20:00', 3, 'Tom Yum Soup', NULL, 40, 15, 20, 4, 'Main Course', 'Thai', 'Asian', 50),
+('00:30:00', '00:15:00', 2, 'Kimchi Fried Rice', NULL, 30, 20, 25, 4, 'Main Course', 'Korean', 'Asian', 51);
+
+-- Inserting dummy data into the recipe_has_ingredient table
+INSERT INTO recipe_has_ingredient (recipe_id, ingredient_id) VALUES
+(12, 4), (32, 37), (10, 34), (45, 10), (1, 49), (42, 11), (3, 22), (33, 20), (10, 27), (37, 8),
+(45, 21), (36, 18), (32, 14), (13, 10), (3, 42), (44, 49), (22, 21), (37, 19), (45, 32), (39, 46),
+(31, 42), (33, 15), (15, 9), (50, 40), (39, 3), (19, 34), (44, 33), (31, 17), (22, 14), (5, 7),
+(45, 25), (48, 42), (4, 36), (44, 17), (19, 27), (18, 16), (8, 45), (34, 18), (18, 46), (34, 48),
+(44, 28), (18, 18), (38, 27), (37, 7), (33, 12), (15, 6), (7, 2), (47, 38), (45, 50), (19, 31),
+(46, 15), (11, 27), (17, 43), (5, 41), (49, 20), (15, 36), (6, 33), (30, 15), (36, 31), (46, 8),
+(19, 33), (12, 3), (40, 19), (2, 35), (31, 25), (46, 44), (26, 38), (36, 33), (11, 13), (8, 26),
+(30, 44), (21, 8), (20, 18), (12, 14), (24, 43), (30, 1), (4, 28), (39, 43), (17, 22), (8, 19),
+(26, 15), (20, 11), (26, 24), (34, 13), (26, 42), (28, 6), (45, 22), (40, 16), (50, 2), (39, 47),
+(24, 13), (32, 26), (47, 5), (39, 40), (28, 19), (8, 16), (12, 32), (14, 38), (26, 3), (23, 50);
+
+-- Inserting dummy data into the recipe_has_tag table
+INSERT INTO recipe_has_tag (tag_name, recipe_id) VALUES
+('Sweet and Sour', 10), ('Soft', 43), ('Savory and Sweet and Bitter', 42), ('Gluten-Free', 49), ('Vegan', 37), 
+('Sweet', 34), ('Fruity', 25), ('Quick and Easy', 40), ('Citrusy', 10), ('Spicy', 23),
+('Umami', 33), ('Chewy', 3), ('Soft', 36), ('Citrusy', 22), ('Sour and Umami', 25), 
+('Crispy', 38), ('Juicy', 21), ('Savory and Spicy and Sweet', 12), ('Low-Fat', 13), ('Sour and Umami', 37),
+('Savory and Umami', 24), ('Spicy and Sweet', 35), ('Savory', 51), ('Soft', 14), ('Soy-Free', 28), 
+('Citrusy', 6), ('Sweet and Umami', 21), ('Chewy', 51), ('Soft', 29), ('Fruity', 36),
+('Sweet and Bitter', 42), ('Vegan', 8), ('Sour and Umami', 21), ('Savory and Sweet', 6), ('Quick and Easy', 8), 
+('Low-Sodium', 31), ('Savory and Sweet and Umami', 24), ('Juicy', 32), ('Savory and Umami', 32), ('High-Protein', 34),
+('Savory and Sour', 33), ('Savory and Spicy and Umami', 28), ('Tender', 31), ('Earthy', 9), ('Bitter', 41), 
+('Savory', 48), ('Sweet and Bitter', 35), ('High-Protein', 3), ('Spicy and Sour', 40), ('Bitter and Umami', 41);
 
 -- Inserting dummy data into the cooking_equipment table
 INSERT INTO cooking_equipment (equipment_name, instructions, image, image_description) VALUES
 ('Pan', 'Use to cook food on the stovetop', NULL, NULL),
 ('Oven', 'Use to bake or roast food', NULL, NULL),
-('Knife', 'Use to cut or chop ingredients', NULL, NULL);
+('Knife', 'Use to cut or chop ingredients', NULL, NULL),
+('Cutting Board', 'Use to prepare ingredients', NULL, NULL),
+('Pot', 'Use to cook food on the stovetop', NULL, NULL),
+('Spatula', 'Use to flip or stir food', NULL, NULL),
+('Whisk', 'Use to mix ingredients', NULL, NULL),
+('Measuring Cup', 'Use to measure liquid ingredients', NULL, NULL),
+('Measuring Spoon', 'Use to measure dry ingredients', NULL, NULL),
+('Mixing Bowl', 'Use to mix ingredients', NULL, NULL),
+('Blender', 'Use to blend or puree ingredients', NULL, NULL),
+('Food Processor', 'Use to chop or grind ingredients', NULL, NULL),
+('Grill', 'Use to cook food over an open flame', NULL, NULL),
+('Toaster', 'Use to toast bread or bagels', NULL, NULL),
+('Microwave', 'Use to heat or cook food quickly', NULL, NULL),
+('Slow Cooker', 'Use to cook food slowly over a long period of time', NULL, NULL),
+('Pressure Cooker', 'Use to cook food quickly under pressure', NULL, NULL),
+('Rice Cooker', 'Use to cook rice', NULL, NULL),
+('Wok', 'Use to stir-fry food', NULL, NULL),
+('Steamer', 'Use to steam food', NULL, NULL),
+('Grater', 'Use to grate or shred ingredients', NULL, NULL),
+('Peeler', 'Use to peel fruits or vegetables', NULL, NULL),
+('Colander', 'Use to drain or rinse ingredients', NULL, NULL),
+('Tongs', 'Use to pick up or turn food', NULL, NULL),
+('Rolling Pin', 'Use to roll out dough', NULL, NULL),
+('Baking Sheet', 'Use to bake or roast food in the oven', NULL, NULL),
+('Muffin Tin', 'Use to bake muffins or cupcakes', NULL, NULL),
+('Cake Pan', 'Use to bake cakes or brownies', NULL, NULL),
+('Pie Dish', 'Use to bake pies or quiches', NULL, NULL),
+('Casserole Dish', 'Use to bake casseroles or lasagnas', NULL, NULL),
+('Baking Dish', 'Use to bake or roast food in the oven', NULL, NULL),
+('Roasting Pan', 'Use to roast meat or vegetables', NULL, NULL),
+('Saucepan', 'Use to cook sauces or soups', NULL, NULL),
+('Skillet', 'Use to cook food on the stovetop', NULL, NULL),
+('Dutch Oven', 'Use to cook food on the stovetop or in the oven', NULL, NULL),
+('Frying Pan', 'Use to fry or saute food', NULL, NULL),
+('Griddle', 'Use to cook pancakes or burgers', NULL, NULL),
+('Sauce Boat', 'Use to serve sauces or gravies', NULL, NULL),
+('Salad Spinner', 'Use to wash and dry salad greens', NULL, NULL),
+('Mandoline', 'Use to slice fruits or vegetables', NULL, NULL),
+('Pastry Brush', 'Use to brush pastries or meats with egg wash', NULL, NULL),
+('Pastry Cutter', 'Use to cut butter into flour for pastries', NULL, NULL),
+('Pastry Bag', 'Use to pipe frosting or batter', NULL, NULL),
+('Pastry Wheel', 'Use to cut dough for pastries', NULL, NULL),
+('Pastry Mat', 'Use to roll out dough for pastries', NULL, NULL),
+('Pastry Ring', 'Use to shape dough for pastries', NULL, NULL),
+('Pastry Mold', 'Use to shape dough for pastries', NULL, NULL),
+('Pastry Lifter', 'Use to transfer pastries to a baking sheet', NULL, NULL),
+('Pastry Docker', 'Use to prick dough for pastries', NULL, NULL),
+('Pastry Server', 'Use to serve pastries or cakes', NULL, NULL),
+('Pastry Stand', 'Use to display pastries or cakes', NULL, NULL);
+
+-- Inserting dummy data into the recipe_has_cooking_equipment table
+INSERT INTO recipe_has_cooking_equipment (recipe_id, equipment_id) VALUES
+(38, 23), (18, 17), (35, 42), (28, 3), (25, 50), (45, 37), (2, 11), (7, 1), (27, 34), (7, 19),
+(45, 12), (37, 8), (28, 5), (48, 38), (9, 1), (35, 1), (25, 27), (16, 42), (46, 43), (45, 23),
+(49, 2), (8, 25), (33, 24), (1, 19), (16, 26), (47, 4), (23, 13), (37, 12), (51, 13), (23, 31),
+(51, 22), (35, 5), (44, 26), (17, 39), (42, 38), (27, 49), (20, 10), (39, 23), (2, 38), (51, 6),
+(23, 24), (31, 37), (41, 23), (33, 37), (39, 16), (49, 27), (42, 6), (7, 48), (27, 26), (2, 33),
+(36, 22), (17, 18), (33, 14), (17, 27), (21, 6), (12, 12), (38, 49), (49, 49), (28, 29), (9, 25),
+(2, 19), (49, 15), (22, 6), (48, 25), (21, 17), (17, 13), (34, 29), (44, 9), (11, 6), (28, 22),
+(16, 2), (32, 31), (46, 30), (25, 16), (23, 46), (26, 8), (26, 17), (23, 9), (44, 41), (34, 15),
+(28, 8), (27, 18), (45, 33), (19, 14), (9, 40), (26, 19), (12, 2), (50, 4), (7, 33), (22, 15),
+(14, 47), (2, 46), (20, 27), (39, 40), (14, 29), (2, 9), (37, 40), (14, 38), (3, 47), (6, 9);
 
 -- Inserting dummy data into the chef table
 INSERT INTO chef (
@@ -254,21 +390,14 @@ INSERT INTO episode (episode_number, season_number) VALUES
 INSERT INTO judge_in_episode (chef_id, episode_number, season_number, judge_number) VALUES
 (1, 1, 1, 1), (2, 2, 1, 1), (3, 3, 1, 1), (4, 4, 1, 1), (5, 5, 1, 1),
 (6, 6, 1, 1), (7, 7, 1, 1), (8, 8, 1, 1), (9, 9, 1, 1), (10, 10, 1, 1),
-
 (11, 1, 2, 1), (12, 2, 2, 1), (13, 3, 2, 1), (14, 4, 2, 1), (15, 5, 2, 1),
 (16, 6, 2, 1), (17, 7, 2, 1), (18, 8, 2, 1), (19, 9, 2, 1), (20, 10, 2, 1),
-
 (21, 1, 3, 1), (22, 2, 3, 1), (23, 3, 3, 1), (24, 4, 3, 1), (25, 5, 3, 1),
 (26, 6, 3, 1), (27, 7, 3, 1), (28, 8, 3, 1), (29, 9, 3, 1), (30, 10, 3, 1),
-
 (31, 1, 4, 1), (32, 2, 4, 1), (33, 3, 4, 1), (34, 4, 4, 1), (35, 5, 4, 1),
 (36, 6, 4, 1), (37, 7, 4, 1), (38, 8, 4, 1), (39, 9, 4, 1), (40, 10, 4, 1),
-
 (41, 1, 5, 1), (42, 2, 5, 1), (43, 3, 5, 1), (44, 4, 5, 1), (45, 5, 5, 1),
 (46, 6, 5, 1), (47, 7, 5, 1), (48, 8, 5, 1), (49, 9, 5, 1), (50, 10, 5, 1);
-
--- Ensure the random function for score generation
-SET @max_score = 5;
 
 -- Inserting dummy data into the scores table
 INSERT INTO scores (
