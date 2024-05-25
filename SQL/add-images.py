@@ -34,10 +34,15 @@ db_params = {
     'db': 'dblabV2'
 }
 
-# Example usage
-#insert_image_with_description(db_params, 'recipe', 'image', 'path/to/your/image.jpg', 'description', 'This is a delicious recipe.', 'recipe_id', 1)
-#insert_image_with_description(db_params, 'cooking_equipment', 'actual_image', 'chef_1.jpg', 'description', 'This is a versatile piece of cooking equipment.', 'equipment_id', 1)
 for i in range(1,51):
     path_to_image = "images/chefs/chef" + str(i) + ".jpg"
     print(f"adding image {path_to_image} to chef with id: {i}")
     insert_image_with_description(db_params, 'chef', 'actual_image', path_to_image, 'image_description', 'This is a renowned chef.', 'chef_id', i)
+for i in range(1,51):
+    path_to_image = "images/equipment/equip" + str(i) + ".jpg"
+    print(f"adding image {path_to_image} to equipment with id: {i}")
+    insert_image_with_description(db_params, 'cooking_equipment', 'image', path_to_image, 'image_description', 'This is a versatile piece of cooking equipment.', 'equipment_id', i)
+for i in range(1,51):
+        path_to_image = "images/recipes/recipe" + str(i) + ".jpeg"
+        print(f"adding image {path_to_image} to recipe with id: {i}")
+        insert_image_with_description(db_params, 'cooking_equipment', 'image', path_to_image, 'image_description', 'This is a versatile piece of cooking equipment.', 'equipment_id', i)
