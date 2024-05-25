@@ -128,6 +128,22 @@ WHERE j1.times_as_judge >= 3;
     and all the vice versa
 */
 
+WITH tag_pairs AS (
+    SELECT t1.recipe_id, t1.tag_name AS tag1, t2.tag_name AS tag2
+        FROM recipe_has_tag t1
+        JOIN recipe_has_tag t2 ON t1.recipe_id = t2.recipe_id
+        WHERE t1.tag_name < t2.tag_name
+    ),
+tag_pair_episodes AS (
+    SELECT tp.tag1, tp.tag2, COUNT(*) AS pair_count
+        FROM tag_pairs tp
+        JOIN scores s ON tp.recipe_id = s.recipe_id
+        GROUP BY tp.tag1, tp.tag2
+)
+SELECT tag1, tag2, pair_count
+    FROM tag_pair_episodes
+    ORDER BY pair_count DESC
+    LIMIT 3;
 
 /* QUERY NO 7 (CHECKED, IT WORKS) */
 SELECT chef_id, COUNT(*) AS times_in_episode
@@ -249,6 +265,27 @@ WHERE cousine_b2b_one.season1_appearances + cousine_b2b_one.season2_appearances 
     Italian/Greek/1/2/4/3/3/4
     and the opposite combination
 */
+
+/* QUERY NO 11 */
+SELECT 
+    j.first_name AS judge_first_name,
+    j.last_name AS judge_last_name,
+    c.first_name AS cook_first_name,
+    c.last_name AS cook_last_name,
+    SUM(s.total_score) AS total_grading_score
+FROM 
+    judge_in_episode jie
+JOIN 
+    scores s ON jie.chef_id = s.chef_id
+JOIN 
+    chef j ON jie.chef_id = j.chef_id
+JOIN 
+    chef c ON s.chef_id = c.chef_id
+GROUP BY 
+    j.first_name, j.last_name, c.first_name, c.last_name
+ORDER BY 
+    total_grading_score DESC
+LIMIT 5;
 
 
 /* QUERY NO 12 (CHECKED, IT WORKS) */

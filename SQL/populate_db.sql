@@ -316,9 +316,6 @@ INSERT INTO recipe_has_cooking_equipment (recipe_id, equipment_id) VALUES
 (28, 8), (27, 18), (45, 33), (19, 14), (9, 40), (26, 19), (12, 2), (50, 4), (7, 33), (22, 15),
 (14, 47), (2, 46), (20, 27), (39, 40), (14, 29), (2, 9), (37, 40), (14, 38), (3, 47), (6, 9);
 
--- Inserting dummy data into the tips tableError Code: 1062. Duplicate entry '2-32' for key 'steps.PRIMARY'
-
-
 -- Inserting dummy data into the steps table
 INSERT INTO steps (step_number, step_description, recipe_id) VALUES
 (1, 'Boil the pasta until al dente.', 1),

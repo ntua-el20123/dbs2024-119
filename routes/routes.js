@@ -310,6 +310,33 @@ router.get('/query5', async (req, res) => {
     }
 });
 
+router.get('/query6', async (req, res) => {
+    try {
+        const [rows] = await pool.query(`
+            WITH tag_pairs AS (
+                SELECT t1.recipe_id, t1.tag_name AS tag1, t2.tag_name AS tag2
+                FROM recipe_has_tag t1
+                JOIN recipe_has_tag t2 ON t1.recipe_id = t2.recipe_id
+                WHERE t1.tag_name < t2.tag_name
+            ),
+            tag_pair_episodes AS (
+                SELECT tp.tag1, tp.tag2, COUNT(*) AS pair_count
+                FROM tag_pairs tp
+                JOIN scores s ON tp.recipe_id = s.recipe_id
+                GROUP BY tp.tag1, tp.tag2
+            )
+            SELECT tag1, tag2, pair_count
+            FROM tag_pair_episodes
+            ORDER BY pair_count DESC
+            LIMIT 3;                
+        `);
+        res.json(rows);
+    } catch (error) {
+        console.error('Error executing query 6:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/query7', async (req, res) => {
     try {
         const [rows] = await pool.query(`
@@ -439,6 +466,36 @@ router.get('/query10', async (req, res) => {
         res.json(rows);
     } catch (error) {
         console.error('Error executing query 10:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/query11', async (req, res) => {
+    try {
+        const [rows] = await pool.query(`
+            SELECT 
+                j.first_name AS judge_first_name,
+                j.last_name AS judge_last_name,
+                c.first_name AS cook_first_name,
+                c.last_name AS cook_last_name,
+                SUM(s.total_score) AS total_grading_score
+            FROM 
+                judge_in_episode jie
+            JOIN 
+                scores s ON jie.chef_id = s.chef_id
+            JOIN 
+                chef j ON jie.chef_id = j.chef_id
+            JOIN 
+                chef c ON s.chef_id = c.chef_id
+            GROUP BY 
+                j.first_name, j.last_name, c.first_name, c.last_name
+            ORDER BY 
+                total_grading_score DESC
+            LIMIT 5;    
+        `);
+        res.json(rows);
+    } catch (error) {
+        console.error('Error executing query 11:', error);
         res.status(500).send('Internal Server Error');
     }
 });
