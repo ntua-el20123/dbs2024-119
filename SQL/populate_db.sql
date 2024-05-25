@@ -112,7 +112,7 @@ INSERT INTO tag (tag_name) VALUES
 ('Savory and Sweet and Umami');
 
 -- Inserting dummy data into the ingredient table
-INSERT INTO ingridient (ingridient_name, food_group_id) VALUES
+INSERT INTO ingredient (ingredient_name, food_group_id) VALUES
 ('Pasta', 1),
 ('Tomato', 2),
 ('Chicken', 5),
@@ -169,7 +169,7 @@ INSERT INTO ingridient (ingridient_name, food_group_id) VALUES
 INSERT INTO recipe (
     cooking_time, prep_time, difficulty, recipe_name, image, carbs_per_serving, 
     fats_per_serving, proteins_per_serving, number_of_servings, 
-    meal_type, cousine_name, theme_name, main_ingridient_id
+    meal_type, cousine_name, theme_name, main_ingredient_id
 ) VALUES
 ('00:45:00', '00:20:00', 3, 'Spaghetti Bolognese', NULL, 50, 20, 30, 4, 'Main Course', 'Italian', 'Italian', 1),
 ('01:00:00', '00:30:00', 4, 'Greek Salad', NULL, 20, 10, 5, 2, 'Appetizer', 'Greek', 'Mediterranean', 2),
@@ -224,7 +224,7 @@ INSERT INTO recipe (
 ('00:30:00', '00:15:00', 2, 'Kimchi Fried Rice', NULL, 30, 20, 25, 4, 'Main Course', 'Korean', 'Asian', 51);
 
 -- Inserting dummy data into the recipe_has_ingredient table
-INSERT INTO recipe_has_ingridient (recipe_id, ingridient_id) VALUES
+INSERT INTO recipe_has_ingredient (recipe_id, ingredient_id) VALUES
 (12, 4), (32, 37), (10, 34), (45, 10), (1, 49), (42, 11), (3, 22), (33, 20), (10, 27), (37, 8),
 (45, 21), (36, 18), (32, 14), (13, 10), (3, 42), (44, 49), (22, 21), (37, 19), (45, 32), (39, 46),
 (31, 42), (33, 15), (15, 9), (50, 40), (39, 3), (19, 34), (44, 33), (31, 17), (22, 14), (5, 7),

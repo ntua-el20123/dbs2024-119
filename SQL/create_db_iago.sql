@@ -135,6 +135,8 @@ CREATE TABLE tips (
     REFERENCES recipe (recipe_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+DELIMITER //
+
 -- Trigger to enforce a maximum of 3 tips per recipe
 CREATE TRIGGER max_3_tips
 BEFORE INSERT ON tips
@@ -150,7 +152,9 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Cannot insert more than 3 tips per recipe';
     END IF;
-END;
+END //
+
+DELIMITER ;
 
 -- Create the steps table
 CREATE TABLE steps (
@@ -213,6 +217,8 @@ CREATE TABLE judge_in_episode (
     REFERENCES episode (season_number) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+DELIMITER //
+
 -- Trigger to prevent a chef from being a judge and a player in the same episode
 CREATE TRIGGER judge_already_player 
 BEFORE INSERT ON judge_in_episode 
@@ -228,7 +234,9 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Cannot insert a chef as a judge in an episode where he is already a player';
     END IF;
-END;
+END //
+
+DELIMITER ;
 
 -- Create the scores table
 CREATE TABLE scores (
@@ -259,13 +267,17 @@ CREATE TABLE scores (
     REFERENCES recipe (recipe_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+DELIMITER //
+
 -- Trigger to calculate total score before inserting into scores table
 CREATE TRIGGER before_scores_insert
 BEFORE INSERT ON scores
 FOR EACH ROW
 BEGIN
     SET NEW.total_score = (NEW.score_1 + NEW.score_2 + NEW.score_3) / 3;
-END;
+END //
+
+DELIMITER ;
 
 -- Create the cook_has_recipe table
 CREATE TABLE cook_has_recipe (
@@ -275,6 +287,8 @@ CREATE TABLE cook_has_recipe (
     FOREIGN KEY (chef_id) REFERENCES chef (chef_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (recipe_id) REFERENCES recipe (recipe_id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
+DELIMITER //
 
 -- Trigger to prevent a chef from being a player and a judge in the same episode
 CREATE TRIGGER player_already_judge
@@ -291,4 +305,6 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Cannot insert a chef as a player in an episode where he is already a judge';
     END IF;
-END;
+END //
+
+DELIMITER ;
