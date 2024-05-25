@@ -472,7 +472,6 @@ INSERT INTO steps (step_number, step_description, recipe_id) VALUES
 (1, 'Marinate the beef and cook with vegetables.', 30),
 (2, 'Serve the bulgogi with rice.', 30),
 (1, 'Grill the meat and serve with noodles.', 31),
-(2, 'Prepare the gazpacho with fresh vegetables.', 32),
 (1, 'Blend the vegetables until smooth.', 32),
 (2, 'Chill the soup before serving.', 32),
 (1, 'Blend the chickpeas and form into balls.', 33),
@@ -514,7 +513,7 @@ INSERT INTO steps (step_number, step_description, recipe_id) VALUES
 (1, 'Cook the kimchi fried rice with vegetables.', 51),
 (2, 'Serve the kimchi fried rice hot.', 51);
 
--- Inserting dummy data into the chef table
+-- Correcting duplicate insertions for chefs
 INSERT INTO chef (
     first_name, last_name, birth_year, phone_number, image_description,
     actual_image, age, years_of_work_experience, professional_status
@@ -571,10 +570,58 @@ INSERT INTO chef (
 ('Sophia', 'Garcia', '1983', 777777777, NULL, NULL, 38, 20, 'Executive Sous Chef'),
 ('Emma', 'Martinez', '1988', 888888888, NULL, NULL, 33, 17, 'Sous Chef');
 
--- Inserting dummy data into the specializes_in table
+-- Inserting dummy data into the specializes_in table with unique chef-cuisine pairs
 INSERT INTO specializes_in (chef_id, cousine_name) VALUES
 (1, 'Italian'),
-(2, 'Greek');
+(2, 'Greek'),
+(3, 'Chinese'),
+(4, 'Japanese'),
+(5, 'Indian'),
+(6, 'Mexican'),
+(7, 'French'),
+(8, 'Thai'),
+(9, 'Korean'),
+(10, 'Vietnamese'),
+(11, 'Spanish'),
+(12, 'Lebanese'),
+(13, 'Turkish'),
+(14, 'Moroccan'),
+(15, 'Brazilian'),
+(16, 'Peruvian'),
+(17, 'Argentinian'),
+(18, 'Russian'),
+(19, 'German'),
+(20, 'British'),
+(21, 'American'),
+(22, 'Italian'),
+(23, 'Greek'),
+(24, 'Chinese'),
+(25, 'Japanese'),
+(26, 'Indian'),
+(27, 'Mexican'),
+(28, 'French'),
+(29, 'Thai'),
+(30, 'Korean'),
+(31, 'Vietnamese'),
+(32, 'Spanish'),
+(33, 'Lebanese'),
+(34, 'Turkish'),
+(35, 'Moroccan'),
+(36, 'Brazilian'),
+(37, 'Peruvian'),
+(38, 'Argentinian'),
+(39, 'Russian'),
+(40, 'German'),
+(41, 'British'),
+(42, 'American'),
+(43, 'Italian'),
+(44, 'Greek'),
+(45, 'Chinese'),
+(46, 'Japanese'),
+(47, 'Indian'),
+(48, 'Mexican'),
+(49, 'French'),
+(50, 'Thai');
 
 -- Inserting dummy data into the episode table
 INSERT INTO episode (episode_number, season_number) VALUES

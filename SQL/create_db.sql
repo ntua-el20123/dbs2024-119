@@ -162,7 +162,7 @@ CREATE TABLE chef (
 CREATE TABLE specializes_in (
     chef_id SMALLINT UNSIGNED NOT NULL,
     cousine_name VARCHAR(30) NOT NULL,
-    PRIMARY KEY(chef_id, cousine_name),
+    PRIMARY KEY(chef_id),
     FOREIGN KEY (chef_id) REFERENCES chef(chef_id) ON DELETE RESTRICT ON UPDATE CASCADE,
     FOREIGN KEY (cousine_name) REFERENCES cousine(cousine_name) ON DELETE RESTRICT ON UPDATE CASCADE
 );
