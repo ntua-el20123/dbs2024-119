@@ -1,0 +1,4 @@
+MySQL version 8.0
+python 3.X
+MySQLdb 1.2.5
+Node JS 20.13.1 
