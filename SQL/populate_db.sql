@@ -112,7 +112,7 @@ INSERT INTO tag (tag_name) VALUES
 ('Savory and Sweet and Umami');
 
 -- Inserting dummy data into the ingredient table
-INSERT INTO ingredient (ingredient_name, food_group_id) VALUES
+INSERT INTO ingridient (ingridient_name, food_group_id) VALUES
 ('Pasta', 1),
 ('Tomato', 2),
 ('Chicken', 5),
@@ -169,72 +169,78 @@ INSERT INTO ingredient (ingredient_name, food_group_id) VALUES
 INSERT INTO recipe (
     cooking_time, prep_time, difficulty, recipe_name, image, carbs_per_serving, 
     fats_per_serving, proteins_per_serving, number_of_servings, 
-    meal_type, cousine_name, theme_name, main_ingredient_id
+    cousine_name, theme_name, main_ingridient_id
 ) VALUES
-('00:45:00', '00:20:00', 3, 'Spaghetti Bolognese', NULL, 50, 20, 30, 4, 'Main Course', 'Italian', 'Italian', 1),
-('01:00:00', '00:30:00', 4, 'Greek Salad', NULL, 20, 10, 5, 2, 'Appetizer', 'Greek', 'Mediterranean', 2),
-('00:30:00', '00:15:00', 2, 'Stir-Fried Chicken with Vegetables', NULL, 10, 15, 20, 3, 'Main Course', 'Chinese', 'Asian', 3),
-('00:45:00', '00:20:00', 3, 'Sushi Rolls', NULL, 30, 10, 15, 4, 'Main Course', 'Japanese', 'Asian', 4),
-('01:30:00', '00:45:00', 5, 'Chicken Tikka Masala', NULL, 40, 25, 35, 4, 'Main Course', 'Indian', 'Asian', 5),
-('01:15:00', '00:30:00', 4, 'Tacos', NULL, 30, 20, 25, 4, 'Main Course', 'Mexican', 'Latin', 6),
-('01:00:00', '00:30:00', 4, 'Coq au Vin', NULL, 20, 30, 25, 4, 'Main Course', 'French', 'French', 7),
-('00:45:00', '00:20:00', 3, 'Pad Thai', NULL, 40, 15, 20, 4, 'Main Course', 'Thai', 'Asian', 8),
-('00:30:00', '00:15:00', 2, 'Bibimbap', NULL, 30, 20, 25, 4, 'Main Course', 'Korean', 'Asian', 9),
-('00:45:00', '00:20:00', 3, 'Pho', NULL, 40, 10, 30, 4, 'Main Course', 'Vietnamese', 'Asian', 10),
-('01:00:00', '00:30:00', 4, 'Paella', NULL, 30, 20, 25, 4, 'Main Course', 'Spanish', 'Mediterranean', 11),
-('01:15:00', '00:45:00', 5, 'Hummus', NULL, 10, 15, 20, 3, 'Appetizer', 'Lebanese', 'Mediterranean', 12),
-('01:30:00', '00:45:00', 5, 'Kebab', NULL, 30, 20, 25, 4, 'Main Course', 'Turkish', 'Mediterranean', 13),
-('01:00:00', '00:30:00', 4, 'Couscous', NULL, 20, 30, 25, 4, 'Main Course', 'Moroccan', 'Mediterranean', 14),
-('00:45:00', '00:20:00', 3, 'Feijoada', NULL, 40, 15, 20, 4, 'Main Course', 'Brazilian', 'Latin', 15),
-('00:30:00', '00:15:00', 2, 'Ceviche', NULL, 30, 20, 25, 4, 'Appetizer', 'Peruvian', 'Latin', 16),
-('00:45:00', '00:20:00', 3, 'Empanadas', NULL, 40, 10, 30, 4, 'Main Course', 'Argentinian', 'Latin', 17),
-('01:00:00', '00:30:00', 4, 'Borscht', NULL, 30, 20, 25, 4, 'Main Course', 'Russian', 'European', 18),
-('01:15:00', '00:45:00', 5, 'Schnitzel', NULL, 20, 30, 25, 4, 'Main Course', 'German', 'European', 19),
-('01:30:00', '00:45:00', 5, 'Fish and Chips', NULL, 10, 15, 20, 3, 'Main Course', 'British', 'European', 20),
-('01:00:00', '00:30:00', 4, 'Burgers', NULL, 30, 20, 25, 4, 'Main Course', 'American', 'American', 21),
-('00:45:00', '00:20:00', 3, 'Spaghetti Carbonara', NULL, 40, 15, 20, 4, 'Main Course', 'Italian', 'Italian', 22),
-('00:30:00', '00:15:00', 2, 'Greek Gyros', NULL, 30, 20, 25, 4, 'Main Course', 'Greek', 'Mediterranean', 23),
-('00:45:00', '00:20:00', 3, 'Sweet and Sour Chicken', NULL, 40, 10, 30, 4, 'Main Course', 'Chinese', 'Asian', 24),
-('01:00:00', '00:30:00', 4, 'Sashimi', NULL, 30, 10, 15, 4, 'Main Course', 'Japanese', 'Asian', 25),
-('01:30:00', '00:45:00', 5, 'Butter Chicken', NULL, 40, 25, 35, 4, 'Main Course', 'Indian', 'Asian', 26),
-('01:15:00', '00:30:00', 4, 'Tamales', NULL, 30, 20, 25, 4, 'Main Course', 'Mexican', 'Latin', 27),
-('01:00:00', '00:30:00', 4, 'Ratatouille', NULL, 20, 30, 25, 4, 'Main Course', 'French', 'French', 28),
-('00:45:00', '00:20:00', 3, 'Green Curry', NULL, 40, 15, 20, 4, 'Main Course', 'Thai', 'Asian', 29),
-('00:30:00', '00:15:00', 2, 'Bulgogi', NULL, 30, 20, 25, 4, 'Main Course', 'Korean', 'Asian', 30),
-('00:45:00', '00:20:00', 3, 'Bun Cha', NULL, 40, 10, 30, 4, 'Main Course', 'Vietnamese', 'Asian', 31),
-('01:00:00', '00:30:00', 4, 'Gazpacho', NULL, 30, 20, 25, 4, 'Main Course', 'Spanish', 'Mediterranean', 32),
-('01:15:00', '00:45:00', 5, 'Falafel', NULL, 10, 15, 20, 3, 'Appetizer', 'Lebanese', 'Mediterranean', 33),
-('01:30:00', '00:45:00', 5, 'Doner Kebab', NULL, 30, 20, 25, 4, 'Main Course', 'Turkish', 'Mediterranean', 34),
-('01:00:00', '00:30:00', 4, 'Tagine', NULL, 20, 30, 25, 4, 'Main Course', 'Moroccan', 'Mediterranean', 35),
-('00:45:00', '00:20:00', 3, 'Pao de Queijo', NULL, 40, 15, 20, 4, 'Main Course', 'Brazilian', 'Latin', 36),
-('00:30:00', '00:15:00', 2, 'Causa', NULL, 30, 20, 25, 4, 'Appetizer', 'Peruvian', 'Latin', 37),
-('00:45:00', '00:20:00', 3, 'Milanesa', NULL, 40, 10, 30, 4, 'Main Course', 'Argentinian', 'Latin', 38),
-('01:00:00', '00:30:00', 4, 'Blini', NULL, 30, 20, 25, 4, 'Main Course', 'Russian', 'European', 39),
-('01:15:00', '00:45:00', 5, 'Sauerbraten', NULL, 20, 30, 25, 4, 'Main Course', 'German', 'European', 40),
-('01:30:00', '00:45:00', 5, 'Shepherd''s Pie', NULL, 10, 15, 20, 3, 'Main Course', 'British', 'European', 41),
-('01:00:00', '00:30:00', 4, 'Mac and Cheese', NULL, 30, 20, 25, 4, 'Main Course', 'American', 'American', 42),
-('00:45:00', '00:20:00', 3, 'Pasta Carbonara', NULL, 40, 15, 20, 4, 'Main Course', 'Italian', 'Italian', 43),
-('00:30:00', '00:15:00', 2, 'Souvlaki', NULL, 30, 20, 25, 4, 'Main Course', 'Greek', 'Mediterranean', 44),
-('00:45:00', '00:20:00', 3, 'General Tso''s Chicken', NULL, 40, 10, 30, 4, 'Main Course', 'Chinese', 'Asian', 45),
-('01:00:00', '00:30:00', 4, 'Tempura', NULL, 30, 10, 15, 4, 'Main Course', 'Japanese', 'Asian', 46),
-('01:30:00', '00:45:00', 5, 'Butter Paneer', NULL, 40, 25, 35, 4, 'Main Course', 'Indian', 'Asian', 47),
-('01:15:00', '00:30:00', 4, 'Tacos al Pastor', NULL, 30, 20, 25, 4, 'Main Course', 'Mexican', 'Latin', 48),
-('01:00:00', '00:30:00', 4, 'Cassoulet', NULL, 20, 30, 25, 4, 'Main Course', 'French', 'French', 49),
-('00:45:00', '00:20:00', 3, 'Tom Yum Soup', NULL, 40, 15, 20, 4, 'Main Course', 'Thai', 'Asian', 50),
-('00:30:00', '00:15:00', 2, 'Kimchi Fried Rice', NULL, 30, 20, 25, 4, 'Main Course', 'Korean', 'Asian', 51);
+('00:45:00', '00:20:00', 3, 'Spaghetti Bolognese', NULL, 50, 20, 30, 4, 'Italian', 'Italian', 1),
+('01:00:00', '00:30:00', 4, 'Greek Salad', NULL, 20, 10, 5, 2, 'Greek', 'Mediterranean', 2),
+('00:30:00', '00:15:00', 2, 'Stir-Fried Chicken with Vegetables', NULL, 10, 15, 20, 3, 'Chinese', 'Asian', 3),
+('00:45:00', '00:20:00', 3, 'Sushi Rolls', NULL, 30, 10, 15, 4, 'Japanese', 'Asian', 4),
+('01:30:00', '00:45:00', 5, 'Chicken Tikka Masala', NULL, 40, 25, 35, 4, 'Indian', 'Asian', 5),
+('01:15:00', '00:30:00', 4, 'Tacos', NULL, 30, 20, 25, 4, 'Mexican', 'Latin', 6),
+('01:00:00', '00:30:00', 4, 'Coq au Vin', NULL, 20, 30, 25, 4, 'French', 'French', 7),
+('00:45:00', '00:20:00', 3, 'Pad Thai', NULL, 40, 15, 20, 4, 'Thai', 'Asian', 8),
+('00:30:00', '00:15:00', 2, 'Bibimbap', NULL, 30, 20, 25, 4, 'Korean', 'Asian', 9),
+('00:45:00', '00:20:00', 3, 'Pho', NULL, 40, 10, 30, 4, 'Vietnamese', 'Asian', 10),
+('01:00:00', '00:30:00', 4, 'Paella', NULL, 30, 20, 25, 4, 'Spanish', 'Mediterranean', 11),
+('01:15:00', '00:45:00', 5, 'Hummus', NULL, 10, 15, 20, 3, 'Lebanese', 'Mediterranean', 12),
+('01:30:00', '00:45:00', 5, 'Kebab', NULL, 30, 20, 25, 4, 'Turkish', 'Mediterranean', 13),
+('01:00:00', '00:30:00', 4, 'Couscous', NULL, 20, 30, 25, 4, 'Moroccan', 'Mediterranean', 14),
+('00:45:00', '00:20:00', 3, 'Feijoada', NULL, 40, 15, 20, 4, 'Brazilian', 'Latin', 15),
+('00:30:00', '00:15:00', 2, 'Ceviche', NULL, 30, 20, 25, 4, 'Peruvian', 'Latin', 16),
+('00:45:00', '00:20:00', 3, 'Empanadas', NULL, 40, 10, 30, 4, 'Argentinian', 'Latin', 17),
+('01:00:00', '00:30:00', 4, 'Borscht', NULL, 30, 20, 25, 4, 'Russian', 'European', 18),
+('01:15:00', '00:45:00', 5, 'Schnitzel', NULL, 20, 30, 25, 4, 'German', 'European', 19),
+('01:30:00', '00:45:00', 5, 'Fish and Chips', NULL, 10, 15, 20, 3, 'British', 'European', 20),
+('01:00:00', '00:30:00', 4, 'Burgers', NULL, 30, 20, 25, 4, 'American', 'American', 21),
+('00:45:00', '00:20:00', 3, 'Spaghetti Carbonara', NULL, 40, 15, 20, 4, 'Italian', 'Italian', 22),
+('00:30:00', '00:15:00', 2, 'Greek Gyros', NULL, 30, 20, 25, 4, 'Greek', 'Mediterranean', 23),
+('00:45:00', '00:20:00', 3, 'Sweet and Sour Chicken', NULL, 40, 10, 30, 4, 'Chinese', 'Asian', 24),
+('01:00:00', '00:30:00', 4, 'Sashimi', NULL, 30, 10, 15, 4, 'Japanese', 'Asian', 25),
+('01:30:00', '00:45:00', 5, 'Butter Chicken', NULL, 40, 25, 35, 4, 'Indian', 'Asian', 26),
+('01:15:00', '00:30:00', 4, 'Tamales', NULL, 30, 20, 25, 4, 'Mexican', 'Latin', 27),
+('01:00:00', '00:30:00', 4, 'Ratatouille', NULL, 20, 30, 25, 4, 'French', 'French', 28),
+('00:45:00', '00:20:00', 3, 'Green Curry', NULL, 40, 15, 20, 4, 'Thai', 'Asian', 29),
+('00:30:00', '00:15:00', 2, 'Bulgogi', NULL, 30, 20, 25, 4, 'Korean', 'Asian', 30),
+('00:45:00', '00:20:00', 3, 'Bun Cha', NULL, 40, 10, 30, 4, 'Vietnamese', 'Asian', 31),
+('01:00:00', '00:30:00', 4, 'Gazpacho', NULL, 30, 20, 25, 4, 'Spanish', 'Mediterranean', 32),
+('01:15:00', '00:45:00', 5, 'Falafel', NULL, 10, 15, 20, 3, 'Lebanese', 'Mediterranean', 33),
+('01:30:00', '00:45:00', 5, 'Doner Kebab', NULL, 30, 20, 25, 4, 'Turkish', 'Mediterranean', 34),
+('01:00:00', '00:30:00', 4, 'Tagine', NULL, 20, 30, 25, 4, 'Moroccan', 'Mediterranean', 35),
+('00:45:00', '00:20:00', 3, 'Pao de Queijo', NULL, 40, 15, 20, 4, 'Brazilian', 'Latin', 36),
+('00:30:00', '00:15:00', 2, 'Causa', NULL, 30, 20, 25, 4, 'Peruvian', 'Latin', 37),
+('00:45:00', '00:20:00', 3, 'Milanesa', NULL, 40, 10, 30, 4, 'Argentinian', 'Latin', 38),
+('01:00:00', '00:30:00', 4, 'Blini', NULL, 30, 20, 25, 4, 'Russian', 'European', 39),
+('01:15:00', '00:45:00', 5, 'Sauerbraten', NULL, 20, 30, 25, 4, 'German', 'European', 40),
+('01:30:00', '00:45:00', 5, 'Shepherd''s Pie', NULL, 10, 15, 20, 3, 'British', 'European', 41),
+('01:00:00', '00:30:00', 4, 'Mac and Cheese', NULL, 30, 20, 25, 4, 'American', 'American', 42),
+('00:45:00', '00:20:00', 3, 'Pasta Carbonara', NULL, 40, 15, 20, 4, 'Italian', 'Italian', 43),
+('00:30:00', '00:15:00', 2, 'Souvlaki', NULL, 30, 20, 25, 4, 'Greek', 'Mediterranean', 44),
+('00:45:00', '00:20:00', 3, 'General Tso''s Chicken', NULL, 40, 10, 30, 4, 'Chinese', 'Asian', 45),
+('01:00:00', '00:30:00', 4, 'Tempura', NULL, 30, 10, 15, 4, 'Japanese', 'Asian', 46),
+('01:30:00', '00:45:00', 5, 'Butter Paneer', NULL, 40, 25, 35, 4, 'Indian', 'Asian', 47),
+('01:15:00', '00:30:00', 4, 'Tacos al Pastor', NULL, 30, 20, 25, 4, 'Mexican', 'Latin', 48),
+('01:00:00', '00:30:00', 4, 'Cassoulet', NULL, 20, 30, 25, 4, 'French', 'French', 49),
+('00:45:00', '00:20:00', 3, 'Tom Yum Soup', NULL, 40, 15, 20, 4, 'Thai', 'Asian', 50),
+('00:30:00', '00:15:00', 2, 'Kimchi Fried Rice', NULL, 30, 20, 25, 4, 'Korean', 'Asian', 51);
 
--- Inserting dummy data into the recipe_has_ingredient table
-INSERT INTO recipe_has_ingredient (recipe_id, ingredient_id) VALUES
-(12, 4), (32, 37), (10, 34), (45, 10), (1, 49), (42, 11), (3, 22), (33, 20), (10, 27), (37, 8),
-(45, 21), (36, 18), (32, 14), (13, 10), (3, 42), (44, 49), (22, 21), (37, 19), (45, 32), (39, 46),
-(31, 42), (33, 15), (15, 9), (50, 40), (39, 3), (19, 34), (44, 33), (31, 17), (22, 14), (5, 7),
-(45, 25), (48, 42), (4, 36), (44, 17), (19, 27), (18, 16), (8, 45), (34, 18), (18, 46), (34, 48),
-(44, 28), (18, 18), (38, 27), (37, 7), (33, 12), (15, 6), (7, 2), (47, 38), (45, 50), (19, 31),
-(46, 15), (11, 27), (17, 43), (5, 41), (49, 20), (15, 36), (6, 33), (30, 15), (36, 31), (46, 8),
-(19, 33), (12, 3), (40, 19), (2, 35), (31, 25), (46, 44), (26, 38), (36, 33), (11, 13), (8, 26),
-(30, 44), (21, 8), (20, 18), (12, 14), (24, 43), (30, 1), (4, 28), (39, 43), (17, 22), (8, 19),
-(26, 15), (20, 11), (26, 24), (34, 13), (26, 42), (28, 6), (45, 22), (40, 16), (50, 2), (39, 47),
-(24, 13), (32, 26), (47, 5), (39, 40), (28, 19), (8, 16), (12, 32), (14, 38), (26, 3), (23, 50);
+
+-- Inserting dummy data into the recipe_has_ingridient table
+INSERT INTO recipe_has_ingridient (recipe_id, ingridient_id, quantity) VALUES
+(12, 4, 50), (32, 37, 70), (10, 34, 30), (45, 10, 90), (1, 49, 10), (42, 11, 60), (3, 22, 20), (33, 20, 80), 
+(10, 27, 40), (37, 8, 50), (45, 21, 30), (36, 18, 60), (32, 14, 70), (13, 10, 50), (3, 42, 90), 
+(44, 49, 10), (22, 21, 20), (37, 19, 40), (45, 32, 60), (39, 46, 30), (31, 42, 70), (33, 15, 10), 
+(15, 9, 50), (50, 40, 90), (39, 3, 80), (19, 34, 20), (44, 33, 30), (31, 17, 60), (22, 14, 70), 
+(5, 7, 10), (45, 25, 20), (48, 42, 40), (4, 36, 30), (44, 17, 70), (19, 27, 50), (18, 16, 80), 
+(8, 45, 90), (34, 18, 60), (18, 46, 20), (34, 48, 30), (44, 28, 50), (18, 18, 40), (38, 27, 70), 
+(37, 7, 10), (33, 12, 20), (15, 6, 90), (7, 2, 60), (47, 38, 30), (45, 50, 20), (19, 31, 70), 
+(46, 15, 10), (11, 27, 50), (17, 43, 60), (5, 41, 40), (49, 20, 80), (15, 36, 90), (6, 33, 70), 
+(30, 15, 50), (36, 31, 30), (46, 8, 20), (19, 33, 10), (12, 3, 40), (40, 19, 70), (2, 35, 50), 
+(31, 25, 20), (46, 44, 30), (26, 38, 90), (36, 33, 60), (11, 13, 50), (8, 26, 10), (30, 44, 70), 
+(21, 8, 20), (20, 18, 40), (12, 14, 50), (24, 43, 90), (30, 1, 30), (4, 28, 60), (39, 43, 80), 
+(17, 22, 70), (8, 19, 50), (26, 15, 10), (20, 11, 20), (26, 24, 40), (34, 13, 30), (26, 42, 50), 
+(28, 6, 60), (45, 22, 70), (40, 16, 90), (50, 2, 80), (39, 47, 20), (24, 13, 30), (32, 26, 10), 
+(47, 5, 40), (39, 40, 50), (28, 19, 60), (8, 16, 70), (12, 32, 30), (14, 38, 90), (26, 3, 80), 
+(23, 50, 10);
 
 -- Inserting dummy data into the recipe_has_tag table
 INSERT INTO recipe_has_tag (tag_name, recipe_id) VALUES
@@ -317,7 +323,7 @@ INSERT INTO recipe_has_cooking_equipment (recipe_id, equipment_id) VALUES
 (14, 47), (2, 46), (20, 27), (39, 40), (14, 29), (2, 9), (37, 40), (14, 38), (3, 47), (6, 9);
 
 -- Inserting dummy data into the steps table
-INSERT INTO steps (step_number, step_description, recipe_id) VALUES
+INSERT INTO steps (step_number, step_despcription, recipe_id) VALUES
 (1, 'Boil the pasta until al dente.', 1),
 (2, 'Prepare the sauce by simmering tomatoes and spices.', 1),
 (3, 'Combine pasta and sauce, and serve hot.', 1),
@@ -611,7 +617,14 @@ INSERT INTO scores (
 
 -- Inserting dummy data into the cook_has_recipe table
 INSERT INTO cook_has_recipe (chef_id, recipe_id) VALUES
-(1, 1),
-(2, 2),
-(1, 3),
-(2, 3);
+(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), 
+(6, 6), (7, 7), (8, 8), (9, 9), (10, 10), 
+(11, 11), (12, 12), (13, 13), (14, 14), (15, 15), 
+(16, 16), (17, 17), (18, 18), (19, 19), (20, 20), 
+(21, 21), (22, 22), (23, 23), (24, 24), (25, 25), 
+(26, 26), (27, 27), (28, 28), (29, 29), (30, 30), 
+(31, 31), (32, 32), (33, 33), (34, 34), (35, 35), 
+(36, 36), (37, 37), (38, 38), (39, 39), (40, 40), 
+(41, 41), (42, 42), (43, 43), (44, 44), (45, 45), 
+(46, 46), (47, 47), (48, 48), (49, 49), (50, 50);
+
